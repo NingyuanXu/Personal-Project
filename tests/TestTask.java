@@ -21,8 +21,7 @@ public class TestTask {
 
     public void testConstructor() {
         Task task = new Task(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
-
-        assertEquals(task.getIndex(), 1);
+        assertEquals(task.getNumber(), 1);
         assertEquals(task.getContent(), "Webwork3");
         assertEquals(task.getCourse(), "Math200");
         assertEquals(task.getType(), "Webwork");
@@ -33,9 +32,9 @@ public class TestTask {
     @Test
 
     public void testGetNumber() {
-        task.setIndex(1);
+        task.setNumber(1);
 
-        assertTrue(task.getIndex() == 1);
+        assertTrue(task.getNumber() == 1);
     }
 
     @Test
@@ -84,9 +83,9 @@ public class TestTask {
     @Test
 
     public void testSetNumber() {
-        task.setIndex(2);
+        task.setNumber(2);
 
-        assertTrue(task.getIndex() == 2);
+        assertTrue(task.getNumber() == 2);
     }
 
     @Test

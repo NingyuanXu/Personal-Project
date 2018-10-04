@@ -1,6 +1,8 @@
 package implementations;
 
+import java.io.IOException;
+
 public interface Loadable {
 
-    boolean load();
+    boolean load() throws IOException;
 }

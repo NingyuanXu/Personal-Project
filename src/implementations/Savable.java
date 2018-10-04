@@ -2,5 +2,5 @@ package implementations;
 
 public interface Savable {
 
-    void save ();
+    boolean save ();
 }

@@ -8,40 +8,38 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestAssignmentTodo {
     Task task;
     Task othertask;
     AssignmentTodo todo;
-    ArrayList<Task> todoList;
+     ArrayList<Task> todoList;
     ArrayList<Task> crossoffList;
+    private boolean status = true;
 
 
     int Number = 1;
 
     @BeforeEach
     public void runBefore() {
-        todoList = new ArrayList<>();
-        crossoffList = new ArrayList<>();
+         todoList = new ArrayList<>();
+          crossoffList = new ArrayList<>();
         task = new Task(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
         othertask = new Task(2, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
-
     }
 
     @Test
 
     public void testAddTask() {
-        todoList.add(task);
+         todoList.add(task);
         assertTrue(todoList.contains(task));
+
         todoList.remove(task);
-        assertFalse(todoList.contains(task));
+         assertFalse(todoList.contains(task));
 
     }
-
 
 
     @Test
@@ -71,10 +69,9 @@ public class TestAssignmentTodo {
     public void testRemoveTaskEmpty() {
         todoList.add(task);
         todoList.remove(task);
-        assertEquals(todoList.size(),0);
+        assertEquals(todoList.size(), 0);
 
     }
-
 
 
     @Test
@@ -99,8 +96,21 @@ public class TestAssignmentTodo {
     public void testRetrieveTaskEmpty() {
         crossoffList.add(task);
         crossoffList.remove(task);
-        assertEquals(todoList.size(),0);
+        assertEquals(todoList.size(), 0);
 
     }
 
+    @Test
+
+    public void testLoad() {
+        status = true;
+        assertTrue(status);
+    }
+
+    @Test
+
+    public void testSave() {
+    status = !status;
+    assertFalse(status);}
 }
+

@@ -2,7 +2,7 @@ package main.model;
 
 
 public class Task {
-    private int index;
+    private int number;
     private String content;
     private String course;
     private String date;
@@ -13,7 +13,7 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "index=" + index +
+                "number=" + number +
                 ", content='" + content + '\'' +
                 ", course='" + course + '\'' +
                 ", date='" + date + '\'' +
@@ -22,9 +22,8 @@ public class Task {
                 '}';
     }
 
-
-    public Task(int index, String content, String course, String type, String date, int timeneeded) {
-        this.index = index;
+    public Task(int number, String content, String course, String type, String date, int timeneeded) {
+        this.number = number;
         this.content = content;
         this.course = course;
         this.date = date;
@@ -33,9 +32,9 @@ public class Task {
     }
 
 
-    // EFFECTS: get the index for the task
-    public int getIndex() {
-        return index;
+    // EFFECTS: get the number for the task
+    public int getNumber() {
+        return number;
     }
 
 
@@ -70,9 +69,9 @@ public class Task {
     }
 
     // MODIFIES: this
-    // EFFECTS: sets index to parameter
-    public void setIndex(int index) {
-        this.index = index;
+    // EFFECTS: sets number to parameter
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     // MODIFIES: this
@@ -107,6 +106,8 @@ public class Task {
     public void setTimeneeded(int timeneeded) {
         this.timeneeded = timeneeded;
     }
+
+
 }
 
 

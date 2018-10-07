@@ -1,26 +1,17 @@
 package main.model;
 
+import implementations.Dailytask;
 
-public class Task {
-    private int number;
-    private String content;
-    private String course;
-    private String date;
-    private String type;
-    private int timeneeded;
+public abstract class Task implements Dailytask {
+    protected int number;
+    protected String content;
+    protected String course;
+    protected String date;
+    protected String type;
+    protected int timeneeded;
 
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "number=" + number +
-                ", content='" + content + '\'' +
-                ", course='" + course + '\'' +
-                ", date='" + date + '\'' +
-                ", type='" + type + '\'' +
-                ", timeneeded=" + timeneeded +
-                '}';
-    }
+
 
     public Task(int number, String content, String course, String type, String date, int timeneeded) {
         this.number = number;
@@ -30,6 +21,8 @@ public class Task {
         this.type = type;
         this.timeneeded = timeneeded;
     }
+
+    public abstract String complete();
 
 
     // EFFECTS: get the number for the task
@@ -109,11 +102,4 @@ public class Task {
 
 
 }
-
-
-
-
-
-
-
 

@@ -2,7 +2,7 @@ package tests;
 
 
 import main.model.AssignmentTodo;
-import main.model.Task;
+import main.model.Regulartask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestAssignmentTodo {
-    Task task;
-    Task othertask;
+    Regulartask regulartask;
+    Regulartask othertask;
     AssignmentTodo todo;
-     ArrayList<Task> todoList;
-    ArrayList<Task> crossoffList;
+     ArrayList<Regulartask> todoList;
+    ArrayList<Regulartask> crossoffList;
     private boolean status = true;
 
 
@@ -26,18 +26,18 @@ public class TestAssignmentTodo {
     public void runBefore() {
          todoList = new ArrayList<>();
           crossoffList = new ArrayList<>();
-        task = new Task(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
-        othertask = new Task(2, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
+        regulartask = new Regulartask(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
+        othertask = new Regulartask(2, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
     }
 
     @Test
 
     public void testAddTask() {
-         todoList.add(task);
-        assertTrue(todoList.contains(task));
+         todoList.add(regulartask);
+        assertTrue(todoList.contains(regulartask));
 
-        todoList.remove(task);
-         assertFalse(todoList.contains(task));
+        todoList.remove(regulartask);
+         assertFalse(todoList.contains(regulartask));
 
     }
 
@@ -45,10 +45,10 @@ public class TestAssignmentTodo {
     @Test
 
     public void testRemoveTaskExist() {
-        todoList.add(task);
-        assertTrue(todoList.contains(task));
-        todoList.remove(task);
-        assertFalse(todoList.contains(task));
+        todoList.add(regulartask);
+        assertTrue(todoList.contains(regulartask));
+        todoList.remove(regulartask);
+        assertFalse(todoList.contains(regulartask));
 
     }
 
@@ -56,10 +56,10 @@ public class TestAssignmentTodo {
 
 
     public void testRemoveTaskNotExist() {
-        todoList.add(task);
-        assertTrue(todoList.contains(task));
+        todoList.add(regulartask);
+        assertTrue(todoList.contains(regulartask));
         todoList.remove(othertask);
-        assertTrue(todoList.contains(task));
+        assertTrue(todoList.contains(regulartask));
 
     }
 
@@ -67,8 +67,8 @@ public class TestAssignmentTodo {
 
 
     public void testRemoveTaskEmpty() {
-        todoList.add(task);
-        todoList.remove(task);
+        todoList.add(regulartask);
+        todoList.remove(regulartask);
         assertEquals(todoList.size(), 0);
 
     }
@@ -77,25 +77,25 @@ public class TestAssignmentTodo {
     @Test
 
     public void testRetrieveTaskExist() {
-        crossoffList.remove(task);
-        todoList.add(task);
-        assertFalse(crossoffList.contains(task));
-        assertTrue(todoList.contains(task));
+        crossoffList.remove(regulartask);
+        todoList.add(regulartask);
+        assertFalse(crossoffList.contains(regulartask));
+        assertTrue(todoList.contains(regulartask));
     }
 
     @Test
 
     public void testRetrieveTaskNotExist() {
-        crossoffList.add(task);
-        crossoffList.remove(task);
-        assertFalse(crossoffList.contains(task));
-        assertFalse(todoList.contains(task));
+        crossoffList.add(regulartask);
+        crossoffList.remove(regulartask);
+        assertFalse(crossoffList.contains(regulartask));
+        assertFalse(todoList.contains(regulartask));
     }
 
     @Test
     public void testRetrieveTaskEmpty() {
-        crossoffList.add(task);
-        crossoffList.remove(task);
+        crossoffList.add(regulartask);
+        crossoffList.remove(regulartask);
         assertEquals(todoList.size(), 0);
 
     }

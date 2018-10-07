@@ -73,12 +73,12 @@ public class AssignmentTodo implements Loadable, Savable {
     }
 
 
-    //MODIFIES: Task t,this
-    //EFFECTS: create a new task t
-    // then add the task t into todoList
+    //MODIFIES: Regulartask t,this
+    //EFFECTS: create a new regular task t
+    // then add the regular task t into todoList
 
-    public void addtask()  {
-        Task t = new Task(Number, "", "", "", "", Number);
+    public void addregulartask()  {
+        Task t = new Regulartask(Number, "", "", "", "", Number);
         System.out.println("Please enter the assignment in text.");
         String content = scanner.next();
         t.setContent(content);
@@ -101,6 +101,34 @@ public class AssignmentTodo implements Loadable, Savable {
         lines.add(String.valueOf(timeneeded));
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t);
+        Number++;
+    }
+
+
+    public void addurgentrtask()  {
+        Task t2 = new Urgenttask(Number, "", "", "","", Number);
+        System.out.println("Please enter the URGENT assignment in text.");
+        String content = scanner.next();
+        t2.setContent(content);
+        lines.add(content);
+        System.out.println("Please enter the course of the assignment.");
+        String course = scanner.next();
+        t2.setCourse(course);
+        lines.add(course);
+        System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
+        String type = scanner.next();
+        t2.setType(type);
+        lines.add(type);
+        System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
+        String date = scanner.next();
+        t2.setDate(date);
+        lines.add(date);
+        System.out.println("Please enter the time needed for the assignment.");
+        int timeneeded = scanner.nextInt();
+        t2.setTimeneeded(timeneeded);
+        lines.add(String.valueOf(timeneeded));
+        System.out.println("The assignment " + Number + " is added successfully!");
+        todoList.add(t2);
         Number++;
     }
 

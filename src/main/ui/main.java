@@ -22,7 +22,8 @@ public class main {
 
 
         System.out.println("Welcome to my project! This is an AssignmentTodo App.");
-        System.out.println("What would you like to do [1] add an assignment to the Todo list, [2] cross off an item [3] show all the Todo items [4] retrieve an item. Please enter your option.");
+        System.out.println("What would you like to do [1] add an assignment to the Todo list, [2] cross off an item [3] show all the Todo items [4] retrieve an item. [5] add an URGENT assignment to the Todo List");
+        System.out.println("Please enter your option.");
 
         while (todo.load()) {
 
@@ -31,7 +32,7 @@ public class main {
 
             if (operation.equals("1")) {
 
-                todo.addtask();
+                todo.addregulartask();
                 System.out.println("Please enter your option.");
 
             } else if (operation.equals("2")) {
@@ -66,7 +67,15 @@ public class main {
                 todo.retrievetask(Integer.parseInt(operation));
                 System.out.println("Please enter your option.");
 
-            } else if (operation.equals("quit")) {
+            }
+
+            else if (operation.equals("5")) {
+                todo.addurgentrtask();
+                System.out.println("Please enter your option.");
+
+            }
+
+            else if (operation.equals("quit")) {
                 writer.println(todo.lines);
                 writer.close();
                 todo.save();

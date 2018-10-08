@@ -132,6 +132,33 @@ public class AssignmentTodo implements Loadable, Savable {
         Number++;
     }
 
+    public void addoptionaltask()  {
+        Task t3 = new Optionaltask(Number, "", "", "","", Number);
+        System.out.println("Please enter the OPTIONAL assignment in text.");
+        String content = scanner.next();
+        t3.setContent(content);
+        lines.add(content);
+        System.out.println("Please enter the course of the assignment.");
+        String course = scanner.next();
+        t3.setCourse(course);
+        lines.add(course);
+        System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
+        String type = scanner.next();
+        t3.setType(type);
+        lines.add(type);
+        System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
+        String date = scanner.next();
+        t3.setDate(date);
+        lines.add(date);
+        System.out.println("Please enter the time needed for the assignment.");
+        int timeneeded = scanner.nextInt();
+        t3.setTimeneeded(timeneeded);
+        lines.add(String.valueOf(timeneeded));
+        System.out.println("The assignment " + Number + " is added successfully!");
+        todoList.add(t3);
+        Number++;
+    }
+
 
     @Override
     public boolean load()  {

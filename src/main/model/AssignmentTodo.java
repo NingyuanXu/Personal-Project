@@ -19,9 +19,36 @@ public class AssignmentTodo implements Loadable, Savable {
     Scanner scanner = new Scanner(System.in);
     int Number = 1;
     private boolean status = true;
-   public List<String> lines = readAllLines(Paths.get("outputfile.txt"));
+    public List<String> lines = readAllLines(Paths.get("outputfile.txt"));
 
     public AssignmentTodo() throws IOException {
+        String currentClass ="";
+        ArrayList<String> temp = new ArrayList<>();
+        for(String s: lines){
+            if(s.equals("Regulartask")||s.equals("Optionaltask")||s.equals("Urgenttask")){
+                buildTask(currentClass, temp);
+                currentClass = s;
+                temp = new ArrayList<>();
+            }else{
+                temp.add(s);
+            }
+        }
+        buildTask(currentClass, temp);
+
+    }
+
+    private void buildTask(String currentClass, ArrayList<String> temp) {
+        if(currentClass!=""){
+            if(currentClass.equals("Regulartask")){
+                todoList.add(new Regulartask(temp));
+            }
+            if(currentClass.equals("Optionaltask")){
+                todoList.add(new Optionaltask(temp));
+            }
+            if(currentClass.equals("Urgenttask")){
+                todoList.add(new Urgenttask(temp));
+            }
+        }
     }
 
 
@@ -77,7 +104,7 @@ public class AssignmentTodo implements Loadable, Savable {
     //EFFECTS: create a new regular task t
     // then add the regular task t into todoList
 
-    public void addregulartask()  {
+    public void addregulartask() {
         Task t = new Regulartask(Number, "", "", "", "", Number);
         System.out.println("Please enter the assignment in text.");
         String content = scanner.next();
@@ -104,9 +131,12 @@ public class AssignmentTodo implements Loadable, Savable {
         Number++;
     }
 
+    //MODIFIES: Urgenttask t,this
+    //EFFECTS: create a new urgent task t
+    // then add the urgent task t into todoList
 
-    public void addurgentrtask()  {
-        Task t2 = new Urgenttask(Number, "", "", "","", Number);
+    public void addurgentrtask() {
+        Urgenttask t2 = new Urgenttask(Number, "", "", "", "", Number,Number,Number);
         System.out.println("Please enter the URGENT assignment in text.");
         String content = scanner.next();
         t2.setContent(content);
@@ -127,13 +157,25 @@ public class AssignmentTodo implements Loadable, Savable {
         int timeneeded = scanner.nextInt();
         t2.setTimeneeded(timeneeded);
         lines.add(String.valueOf(timeneeded));
+        System.out.println("Please enter the level of urgency for the assignment.");
+        int levelofurgency = scanner.nextInt();
+        t2.setLevelofurgency(levelofurgency);
+        lines.add(String.valueOf(levelofurgency));
+        System.out.println("Please enter the percentage of weight for the assignment.");
+        int percentageofweight = scanner.nextInt();
+        t2.setPercentageofweight(percentageofweight);
+        lines.add(String.valueOf(percentageofweight));
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t2);
         Number++;
     }
 
-    public void addoptionaltask()  {
-        Task t3 = new Optionaltask(Number, "", "", "","", Number);
+    //MODIFIES: Optionaltask t,this
+    //EFFECTS: create a new optional task t
+    // then add the optional task t into todoList
+
+    public void addoptionaltask() {
+        Task t3 = new Optionaltask(Number, "", "", "", "", Number);
         System.out.println("Please enter the OPTIONAL assignment in text.");
         String content = scanner.next();
         t3.setContent(content);
@@ -161,7 +203,7 @@ public class AssignmentTodo implements Loadable, Savable {
 
 
     @Override
-    public boolean load()  {
+    public boolean load() {
         return status;
     }
 

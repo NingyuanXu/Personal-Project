@@ -2,6 +2,8 @@ package main.model;
 
 import implementations.Dailytask;
 
+import java.util.ArrayList;
+
 public abstract class Task implements Dailytask {
     protected int number;
     protected String content;
@@ -11,8 +13,6 @@ public abstract class Task implements Dailytask {
     protected int timeneeded;
 
 
-
-
     public Task(int number, String content, String course, String type, String date, int timeneeded) {
         this.number = number;
         this.content = content;
@@ -20,6 +20,10 @@ public abstract class Task implements Dailytask {
         this.date = date;
         this.type = type;
         this.timeneeded = timeneeded;
+    }
+
+    public Task(ArrayList<String> data){
+        load(data);
     }
 
     public abstract String complete();
@@ -100,6 +104,7 @@ public abstract class Task implements Dailytask {
         this.timeneeded = timeneeded;
     }
 
+    protected abstract void load(ArrayList<String> data);
 
 }
 

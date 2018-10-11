@@ -6,6 +6,7 @@ import main.model.Regulartask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +16,7 @@ public class TestAssignmentTodo {
     Regulartask regulartask;
     Regulartask othertask;
     AssignmentTodo todo;
-     ArrayList<Regulartask> todoList;
+    ArrayList<Regulartask> todoList;
     ArrayList<Regulartask> crossoffList;
     private boolean status = true;
 
@@ -24,6 +25,7 @@ public class TestAssignmentTodo {
 
     @BeforeEach
     public void runBefore() {
+
          todoList = new ArrayList<>();
           crossoffList = new ArrayList<>();
         regulartask = new Regulartask(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
@@ -32,73 +34,91 @@ public class TestAssignmentTodo {
 
     @Test
 
-    public void testAddTask() {
-         todoList.add(regulartask);
-        assertTrue(todoList.contains(regulartask));
+    public void testAddRegularTask() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
+        System.setIn(in);
+        try{
+            todo = new AssignmentTodo();
+        }catch (Exception e){
 
-        todoList.remove(regulartask);
-         assertFalse(todoList.contains(regulartask));
+        }
+        todo.addregulartask();
+        assertEquals(todo.todoList.size(),1);
+
+    }
+
+    @Test
+
+    public void testAddOptionalTask() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
+        System.setIn(in);
+        try{
+            todo = new AssignmentTodo();
+        }catch (Exception e){
+
+        }
+        todo.addoptionaltask();
+        assertEquals(todo.todoList.size(),1);
+
+    }
+
+    @Test
+
+    public void testAddUrgentTask() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n3\n4\n".getBytes());
+        System.setIn(in);
+        try{
+            todo = new AssignmentTodo();
+        }catch (Exception e){
+
+        }
+        todo.addoptionaltask();
+        assertEquals(todo.todoList.size(),1);
+
+    }
+    @Test
+
+    public void testRemoveTask() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
+        System.setIn(in);
+        try{
+            todo = new AssignmentTodo();
+        }catch (Exception e){
+
+        }
+        todo.addregulartask();
+
+        assertEquals(todo.todoList.size(),1);
+        todo.removetask(1);
+        assertEquals(todo.todoList.size(),0);
 
     }
 
 
     @Test
 
-    public void testRemoveTaskExist() {
-        todoList.add(regulartask);
-        assertTrue(todoList.contains(regulartask));
-        todoList.remove(regulartask);
-        assertFalse(todoList.contains(regulartask));
+    public void testRetrieveTask() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
+        System.setIn(in);
+        try{
+            todo = new AssignmentTodo();
+        }catch (Exception e){
 
-    }
+        }
+        todo.addregulartask();
 
-    @Test
-
-
-    public void testRemoveTaskNotExist() {
-        todoList.add(regulartask);
-        assertTrue(todoList.contains(regulartask));
-        todoList.remove(othertask);
-        assertTrue(todoList.contains(regulartask));
-
-    }
-
-    @Test
+        assertEquals(todo.todoList.size(),1);
+        todo.removetask(1);
+        assertEquals(todo.todoList.size(),0);
+        todo.retrievetask(1);
+        assertEquals(todo.crossoffList.size(),0);
+        assertEquals(todo.todoList.size(),1);
 
 
-    public void testRemoveTaskEmpty() {
-        todoList.add(regulartask);
-        todoList.remove(regulartask);
-        assertEquals(todoList.size(), 0);
 
     }
 
 
-    @Test
-
-    public void testRetrieveTaskExist() {
-        crossoffList.remove(regulartask);
-        todoList.add(regulartask);
-        assertFalse(crossoffList.contains(regulartask));
-        assertTrue(todoList.contains(regulartask));
-    }
-
-    @Test
-
-    public void testRetrieveTaskNotExist() {
-        crossoffList.add(regulartask);
-        crossoffList.remove(regulartask);
-        assertFalse(crossoffList.contains(regulartask));
-        assertFalse(todoList.contains(regulartask));
-    }
-
-    @Test
-    public void testRetrieveTaskEmpty() {
-        crossoffList.add(regulartask);
-        crossoffList.remove(regulartask);
-        assertEquals(todoList.size(), 0);
-
-    }
 
     @Test
 

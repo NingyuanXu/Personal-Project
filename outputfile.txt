@@ -1,0 +1,26 @@
+Regulartask
+number: 1
+content: 2
+course: w
+date: w
+type: w
+timeneeded: 1
+
+Optionaltask
+number: 2
+content: w
+course: w
+date: 1
+type: w
+timeneeded: 3
+
+Urgenttask
+number: 1
+content: w
+course: w
+date: w
+type: w
+timeneeded: 1
+levelofurgency: 1
+percentageofweight: 1
+

@@ -1,6 +1,8 @@
 package main.ui;
 
 import main.model.AssignmentTodo;
+import main.model.Task;
+import main.model.Urgenttask;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,24 +14,26 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
+        Task t = new Urgenttask(1, "", "", "", "", 2);
+        t.setreminder();
+        t.complete();
 
         Scanner scanner = new Scanner(System.in);
         String operation;
-        PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");
+
 
         AssignmentTodo todo = new AssignmentTodo();
 
 
-
-        System.out.println("Welcome to my project! This is an AssignmentTodo App.");
-        System.out.println("What would you like to do " +
+        System.out.println("\nWelcome to my project! This is an AssignmentTodo App.");
+        System.out.println("\nWhat would you like to do\n " +
                 "\n[1] add a REGULAR assignment to the Todo list." +
                 "\n[2] add an URGENT assignment to the Todo List." +
                 "\n[3] add an OPTIONAL assignment to the Todo List." +
                 "\n[4] show all the assignments in the Todo List. " +
                 "\n[5] cross off an item from the Todo List. " +
                 "\n[6] retrieve an item.  ");
-        System.out.println("Please enter your option.");
+        System.out.println("\nPlease enter your option.");
 
         while (todo.load()) {
 
@@ -41,24 +45,18 @@ public class main {
                 todo.addregulartask();
                 System.out.println("Please enter your option.");
 
-            }
-
-            else if (operation.equals("2")) {
+            } else if (operation.equals("2")) {
                 todo.addurgentrtask();
                 System.out.println("Please enter your option.");
 
-            }
-
-            else if (operation.equals("3")) {
+            } else if (operation.equals("3")) {
                 todo.addoptionaltask();
                 System.out.println("Please enter your option.");
 
-            }
-
-            else if (operation.equals("4")) {
+            } else if (operation.equals("4")) {
 
 
-                for (int num = 0; num < todo.lines.size(); num++) {
+                /*for (int num = 0; num < todo.lines.size(); num++) {
                     System.out.println("Content: " + todo.lines.get(num) + " ");
                     System.out.println("Course: " + todo.lines.get(num + 1) + " ");
                     System.out.println("Date: " + todo.lines.get(num + 2) + " ");
@@ -66,35 +64,50 @@ public class main {
                     System.out.println("Timeneeded: " + todo.lines.get(num + 4));
                     num = num + 4;
                     System.out.println("");
+
+                }*/
+
+                for(Task task: todo.todoList){
+                    System.out.println(task.toString());
+
                 }
                 System.out.println("Please enter your option.");
 
 
-            }else if (operation.equals("5")) {
+            } else if (operation.equals("5")) {
 
-                System.out.println(todo.todoList);
+                for (Task task : todo.todoList) {
+                    System.out.println(task.toString());
+
+                }
                 System.out.println("Please select the number for the item that you would like to delete.");
                 operation = scanner.nextLine();
                 todo.removetask(Integer.parseInt(operation));
                 System.out.println("Please enter your option.");
 
 
-            }  else if (operation.equals("6")) {
+            } else if (operation.equals("6")) {
 
-                System.out.println(todo.crossoffList);
+                for (Task task : todo.crossoffList) {
+                    System.out.println(task.toString());
+
+                }
                 System.out.println("Please enter the number of the item that you would like to retrieve.");
                 operation = scanner.nextLine();
                 todo.retrievetask(Integer.parseInt(operation));
                 System.out.println("Please enter your option.");
 
-            }
-
-
-            else if (operation.equals("quit")) {
-                writer.println(todo.lines);
+            } else if (operation.equals("quit")) {
+                PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");
+                for(Task task:todo.todoList){
+                    writer.println(task.toString());
+                }
                 writer.close();
                 todo.save();
-            }}}}
+            }
+        }
+    }
+}
 
 
 

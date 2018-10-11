@@ -1,9 +1,6 @@
 package main.model;
 
 
-import implementations.Loadable;
-import implementations.Savable;
-
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -13,29 +10,40 @@ import java.util.Scanner;
 import static java.nio.file.Files.readAllLines;
 
 
-public class AssignmentTodo implements Loadable, Savable {
+public class AssignmentTodo  {
     public ArrayList<Task> todoList = new ArrayList<>();
     public ArrayList<Task> crossoffList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    int Number = 1;
+    public int Number = 1;
     private boolean status = true;
-    public List<String> lines = readAllLines(Paths.get("outputfile.txt"));
 
-    public AssignmentTodo() throws IOException {
-        String currentClass ="";
-        ArrayList<String> temp = new ArrayList<>();
-        for(String s: lines){
-            if(s.equals("Regulartask")||s.equals("Optionaltask")||s.equals("Urgenttask")){
-                buildTask(currentClass, temp);
-                currentClass = s;
-                temp = new ArrayList<>();
-            }else{
-                temp.add(s);
+    public AssignmentTodo(boolean load) throws IOException {
+        if(load) {
+            List<String> lines = readAllLines(Paths.get("outputfile.txt"));
+            if (lines.size()>0)
+            {
+                Number =Integer.parseInt(lines.get(0));
+            lines.remove(0);
             }
+
+            String currentClass = "";
+            ArrayList<String> temp = new ArrayList<>();
+            for (String s : lines) {
+                if (s.equals("Regulartask") || s.equals("Optionaltask") || s.equals("Urgenttask")) {
+                    buildTask(currentClass, temp);
+                    currentClass = s;
+                    temp = new ArrayList<>();
+                } else {
+                    temp.add(s);
+                }
+            }
+            buildTask(currentClass, temp);
         }
-        buildTask(currentClass, temp);
 
     }
+
+
+
 
     private void buildTask(String currentClass, ArrayList<String> temp) {
         if(currentClass!=""){
@@ -109,23 +117,18 @@ public class AssignmentTodo implements Loadable, Savable {
         System.out.println("Please enter the assignment in text.");
         String content = scanner.next();
         t.setContent(content);
-        lines.add(content);
         System.out.println("Please enter the course of the assignment.");
         String course = scanner.next();
         t.setCourse(course);
-        lines.add(course);
         System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
         String type = scanner.next();
         t.setType(type);
-        lines.add(type);
         System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
         String date = scanner.next();
         t.setDate(date);
-        lines.add(date);
         System.out.println("Please enter the time needed for the assignment.");
         int timeneeded = scanner.nextInt();
         t.setTimeneeded(timeneeded);
-        lines.add(String.valueOf(timeneeded));
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t);
         Number++;
@@ -140,31 +143,24 @@ public class AssignmentTodo implements Loadable, Savable {
         System.out.println("Please enter the URGENT assignment in text.");
         String content = scanner.next();
         t2.setContent(content);
-        lines.add(content);
         System.out.println("Please enter the course of the assignment.");
         String course = scanner.next();
         t2.setCourse(course);
-        lines.add(course);
         System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
         String type = scanner.next();
         t2.setType(type);
-        lines.add(type);
         System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
         String date = scanner.next();
         t2.setDate(date);
-        lines.add(date);
         System.out.println("Please enter the time needed for the assignment.");
         int timeneeded = scanner.nextInt();
         t2.setTimeneeded(timeneeded);
-        lines.add(String.valueOf(timeneeded));
-        System.out.println("Please enter the level of urgency for the assignment.");
+        System.out.println("Please enter the level of urgency for the assignment, from 0-10");
         int levelofurgency = scanner.nextInt();
         t2.setLevelofurgency(levelofurgency);
-        lines.add(String.valueOf(levelofurgency));
-        System.out.println("Please enter the percentage of weight for the assignment.");
+        System.out.println("Please enter the percentage of weight for the assignment, eg.30");
         int percentageofweight = scanner.nextInt();
         t2.setPercentageofweight(percentageofweight);
-        lines.add(String.valueOf(percentageofweight));
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t2);
         Number++;
@@ -179,39 +175,25 @@ public class AssignmentTodo implements Loadable, Savable {
         System.out.println("Please enter the OPTIONAL assignment in text.");
         String content = scanner.next();
         t3.setContent(content);
-        lines.add(content);
         System.out.println("Please enter the course of the assignment.");
         String course = scanner.next();
         t3.setCourse(course);
-        lines.add(course);
         System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
         String type = scanner.next();
         t3.setType(type);
-        lines.add(type);
         System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
         String date = scanner.next();
         t3.setDate(date);
-        lines.add(date);
         System.out.println("Please enter the time needed for the assignment.");
         int timeneeded = scanner.nextInt();
         t3.setTimeneeded(timeneeded);
-        lines.add(String.valueOf(timeneeded));
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t3);
         Number++;
     }
 
 
-    @Override
-    public boolean load() {
-        return status;
-    }
 
-    @Override
-    public boolean save() {
-        status = !status;
-        return false;
-    }
 }
 
 

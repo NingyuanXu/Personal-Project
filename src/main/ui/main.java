@@ -22,7 +22,7 @@ public class main {
         String operation;
 
 
-        AssignmentTodo todo = new AssignmentTodo();
+        AssignmentTodo todo = new AssignmentTodo(true);
 
 
         System.out.println("\nWelcome to my project! This is an AssignmentTodo App.");
@@ -35,7 +35,7 @@ public class main {
                 "\n[6] retrieve an item.  ");
         System.out.println("\nPlease enter your option.");
 
-        while (todo.load()) {
+        while (true) {
 
             operation = scanner.nextLine();
 
@@ -55,17 +55,6 @@ public class main {
 
             } else if (operation.equals("4")) {
 
-
-                /*for (int num = 0; num < todo.lines.size(); num++) {
-                    System.out.println("Content: " + todo.lines.get(num) + " ");
-                    System.out.println("Course: " + todo.lines.get(num + 1) + " ");
-                    System.out.println("Date: " + todo.lines.get(num + 2) + " ");
-                    System.out.println("Type: " + todo.lines.get(num + 3) + " ");
-                    System.out.println("Timeneeded: " + todo.lines.get(num + 4));
-                    num = num + 4;
-                    System.out.println("");
-
-                }*/
 
                 for(Task task: todo.todoList){
                     System.out.println(task.toString());
@@ -99,11 +88,12 @@ public class main {
 
             } else if (operation.equals("quit")) {
                 PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");
+                writer.println(todo.Number);
                 for(Task task:todo.todoList){
                     writer.println(task.toString());
                 }
                 writer.close();
-                todo.save();
+                break;
             }
         }
     }

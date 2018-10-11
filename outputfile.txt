@@ -1,26 +1,37 @@
+6
 Regulartask
 number: 1
-content: 2
-course: w
-date: w
-type: w
-timeneeded: 1
-
-Optionaltask
-number: 2
-content: w
-course: w
-date: 1
-type: w
-timeneeded: 3
+content: 23
+course: 32
+date: 2
+type: 23
+timeneeded: 2
 
 Urgenttask
-number: 1
-content: w
-course: w
-date: w
-type: w
-timeneeded: 1
-levelofurgency: 1
-percentageofweight: 1
+number: 2
+content: 324
+course: 234
+date: 2
+type: 2
+timeneeded: 2
+levelofurgency: 2
+percentageofweight: 2
+
+Regulartask
+number: 4
+content: 2
+course: e
+date: e
+type: d
+timeneeded: 2
+
+Urgenttask
+number: 5
+content: e
+course: d
+date: e
+type: e
+timeneeded: 3
+levelofurgency: 4
+percentageofweight: 2
 

@@ -26,8 +26,8 @@ public class TestAssignmentTodo {
     @BeforeEach
     public void runBefore() {
 
-         todoList = new ArrayList<>();
-          crossoffList = new ArrayList<>();
+        todoList = new ArrayList<>();
+        crossoffList = new ArrayList<>();
         regulartask = new Regulartask(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
         othertask = new Regulartask(2, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
     }
@@ -37,13 +37,13 @@ public class TestAssignmentTodo {
     public void testAddRegularTask() {
         ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
-        try{
-            todo = new AssignmentTodo();
-        }catch (Exception e){
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
 
         }
         todo.addregulartask();
-        assertEquals(todo.todoList.size(),1);
+        assertEquals(todo.todoList.size(), 1);
 
     }
 
@@ -52,13 +52,13 @@ public class TestAssignmentTodo {
     public void testAddOptionalTask() {
         ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
-        try{
-            todo = new AssignmentTodo();
-        }catch (Exception e){
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
 
         }
         todo.addoptionaltask();
-        assertEquals(todo.todoList.size(),1);
+        assertEquals(todo.todoList.size(), 1);
 
     }
 
@@ -67,30 +67,31 @@ public class TestAssignmentTodo {
     public void testAddUrgentTask() {
         ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n3\n4\n".getBytes());
         System.setIn(in);
-        try{
-            todo = new AssignmentTodo();
-        }catch (Exception e){
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
 
         }
         todo.addoptionaltask();
-        assertEquals(todo.todoList.size(),1);
+        assertEquals(todo.todoList.size(), 1);
 
     }
+
     @Test
 
     public void testRemoveTask() {
         ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
-        try{
-            todo = new AssignmentTodo();
-        }catch (Exception e){
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
 
         }
         todo.addregulartask();
 
-        assertEquals(todo.todoList.size(),1);
+        assertEquals(todo.todoList.size(), 1);
         todo.removetask(1);
-        assertEquals(todo.todoList.size(),0);
+        assertEquals(todo.todoList.size(), 0);
 
     }
 
@@ -100,37 +101,25 @@ public class TestAssignmentTodo {
     public void testRetrieveTask() {
         ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
-        try{
-            todo = new AssignmentTodo();
-        }catch (Exception e){
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
 
         }
         todo.addregulartask();
 
-        assertEquals(todo.todoList.size(),1);
+        assertEquals(todo.todoList.size(), 1);
         todo.removetask(1);
-        assertEquals(todo.todoList.size(),0);
+        assertEquals(todo.todoList.size(), 0);
         todo.retrievetask(1);
-        assertEquals(todo.crossoffList.size(),0);
-        assertEquals(todo.todoList.size(),1);
-
+        assertEquals(todo.crossoffList.size(), 0);
+        assertEquals(todo.todoList.size(), 1);
 
 
     }
-
-
-
-    @Test
-
-    public void testLoad() {
-        status = true;
-        assertTrue(status);
-    }
-
-    @Test
-
-    public void testSave() {
-    status = !status;
-    assertFalse(status);}
 }
+
+
+
+
 

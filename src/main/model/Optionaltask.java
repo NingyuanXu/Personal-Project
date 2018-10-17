@@ -3,7 +3,7 @@ package main.model;
 import java.util.ArrayList;
 
 public class Optionaltask extends Task {
-    public Optionaltask(int number, String content, String course, String type, String date, int timeneeded) {
+    public Optionaltask(int number, String content, String course, String type, String date, double timeneeded) {
         super(number, content, course, type, date, timeneeded);
     }
     public Optionaltask(ArrayList<String> data){
@@ -14,13 +14,11 @@ public class Optionaltask extends Task {
     @Override
     public String toString() {
         return "Optionaltask" +"\n"+
-                "number: " + number +"\n"+
-                "content: " + content  +"\n"+
-                "course: " + course  +"\n"+
-                "date: " + date  +"\n"+
-                "type: " + type  +"\n"+
-                "timeneeded: " + timeneeded +"\n";
+
+        printcontent();
     }
+
+
 
     @Override
     public String complete() {
@@ -50,7 +48,7 @@ public class Optionaltask extends Task {
             }else if(s.startsWith("type")){
                 type = s.substring(6);
             }else if(s.startsWith("timeneeded")){
-                timeneeded = Integer.parseInt(s.substring(12));
+                timeneeded = Double.parseDouble(s.substring(12));
             }
         }
     }

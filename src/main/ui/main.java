@@ -1,8 +1,10 @@
 package main.ui;
 
+import exceptions.ItemNotThereException;
+import exceptions.NegativeNumberException;
+import exceptions.TooManyThingsToDoException;
 import main.model.AssignmentTodo;
 import main.model.Task;
-import main.model.Urgenttask;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,18 +16,16 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
-        Task t = new Urgenttask(1, "", "", "", "", 2);
-        t.setreminder();
-        t.complete();
+
 
         Scanner scanner = new Scanner(System.in);
         String operation;
-
 
         AssignmentTodo todo = new AssignmentTodo(true);
 
 
         System.out.println("\nWelcome to my project! This is an AssignmentTodo App.");
+
         System.out.println("\nWhat would you like to do\n " +
                 "\n[1] add a REGULAR assignment to the Todo list." +
                 "\n[2] add an URGENT assignment to the Todo List." +
@@ -35,6 +35,7 @@ public class main {
                 "\n[6] retrieve an item.  ");
         System.out.println("\nPlease enter your option.");
 
+
         while (true) {
 
             operation = scanner.nextLine();
@@ -42,15 +43,38 @@ public class main {
 
             if (operation.equals("1")) {
 
-                todo.addregulartask();
+                try {
+                    todo.addregulartask();
+                } catch (NegativeNumberException e) {
+                    System.out.println("You entered a negative number!");
+                }catch (TooManyThingsToDoException e) {
+                    System.out.println("You have too many things to do.");
+                }
+
                 System.out.println("Please enter your option.");
 
             } else if (operation.equals("2")) {
-                todo.addurgentrtask();
+                try {
+                    try {
+                        todo.addurgentrtask();
+                    } catch (NegativeNumberException e) {
+                        System.out.println("You entered a negative number!");
+                    }
+                } catch (TooManyThingsToDoException e) {
+                    System.out.println("You have too many things to do.");
+                }
                 System.out.println("Please enter your option.");
 
             } else if (operation.equals("3")) {
-                todo.addoptionaltask();
+                try {
+                    try {
+                        todo.addurgentrtask();
+                    } catch (NegativeNumberException e) {
+                        System.out.println("You entered a negative number!");
+                    }
+                } catch (TooManyThingsToDoException e) {
+                    System.out.println("You have too many things to do.");
+                }
                 System.out.println("Please enter your option.");
 
             } else if (operation.equals("4")) {
@@ -71,7 +95,12 @@ public class main {
                 }
                 System.out.println("Please select the number for the item that you would like to delete.");
                 operation = scanner.nextLine();
-                todo.removetask(Integer.parseInt(operation));
+                try {
+                    todo.removetask(Integer.parseInt(operation));
+                } catch (ItemNotThereException e) {
+                    System.out.println("ITEM NOT FOUND!");
+
+                }
                 System.out.println("Please enter your option.");
 
 
@@ -83,7 +112,12 @@ public class main {
                 }
                 System.out.println("Please enter the number of the item that you would like to retrieve.");
                 operation = scanner.nextLine();
-                todo.retrievetask(Integer.parseInt(operation));
+                try {
+                    todo.retrievetask(Integer.parseInt(operation));
+                } catch (ItemNotThereException e) {
+                    System.out.println("ITEM NOT FOUND!");
+
+                }
                 System.out.println("Please enter your option.");
 
             } else if (operation.equals("quit")) {
@@ -98,12 +132,3 @@ public class main {
         }
     }
 }
-
-
-
-
-
-
-
-
-

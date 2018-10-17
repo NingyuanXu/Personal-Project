@@ -10,10 +10,10 @@ public abstract class Task implements Dailytask {
     protected String course;
     protected String date;
     protected String type;
-    protected int timeneeded;
+    protected double timeneeded;
 
 
-    public Task(int number, String content, String course, String type, String date, int timeneeded) {
+    public Task(int number, String content, String course, String type, String date, double timeneeded) {
         this.number = number;
         this.content = content;
         this.course = course;
@@ -28,6 +28,14 @@ public abstract class Task implements Dailytask {
 
     public abstract String complete();
 
+    public String printcontent (){
+        return
+                "number: " + number +"\n"+
+                        "content: " + content  +"\n"+
+                        "course: " + course  +"\n"+
+                        "date: " + date  +"\n"+
+                        "type: " + type  +"\n"+
+                        "timeneeded: " + timeneeded +"\n";}
 
     // EFFECTS: get the number for the task
     public int getNumber() {
@@ -61,7 +69,7 @@ public abstract class Task implements Dailytask {
 
     // EFFECTS: get the time needed for the task
 
-    public int getTimeneeded() {
+    public double getTimeneeded() {
         return timeneeded;
     }
 
@@ -100,7 +108,7 @@ public abstract class Task implements Dailytask {
     // MODIFIES: this
     // EFFECTS: sets timeneeded to parameter
 
-    public void setTimeneeded(int timeneeded) {
+    public void setTimeneeded(double timeneeded) {
         this.timeneeded = timeneeded;
     }
 

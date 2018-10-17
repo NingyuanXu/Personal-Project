@@ -8,11 +8,11 @@ public class Urgenttask extends Task {
     private int percentageofweight;
 
 
-    public Urgenttask(int number, String content, String course, String type, String date, int timeneeded) {
+    public Urgenttask(int number, String content, String course, String type, String date, int number1, int i, double timeneeded) {
         super(number, content, course, type, date, timeneeded);
     }
 
-    public Urgenttask(int number, String content, String course, String type, String date, int timeneeded, int levelofurgency, int percentageofweight) {
+    public Urgenttask(int number, String content, String course, String type, String date, double timeneeded, int levelofurgency) {
         super(number, content, course, type, date, timeneeded);
         this.levelofurgency = levelofurgency;
         this.percentageofweight = percentageofweight;
@@ -26,15 +26,10 @@ public class Urgenttask extends Task {
     @Override
     public String toString() {
         return "Urgenttask" +"\n"+
-                "number: " + number +"\n"+
-                "content: " + content +"\n"+
-                "course: " + course  +"\n"+
-                "date: " + date +"\n"+
-                "type: " + type +"\n"+
-                "timeneeded: " + timeneeded +"\n"+
-                "levelofurgency: " + levelofurgency +"\n"+
-                "percentageofweight: " + percentageofweight +"\n";
-    }
+                printcontent()+
+            "levelofurgency: " + levelofurgency +"\n"+
+            "percentageofweight: " + percentageofweight +"\n";
+}
 
     @Override
     public String complete() {
@@ -76,7 +71,7 @@ public class Urgenttask extends Task {
             }else if(s.startsWith("type")){
                 type = s.substring(6);
             }else if(s.startsWith("timeneeded")){
-                timeneeded = Integer.parseInt(s.substring(12));
+                timeneeded = Double.parseDouble(s.substring(12));
             }else if(s.startsWith("levelofurgency")){
                 levelofurgency = Integer.parseInt(s.substring(16));
             }else if(s.startsWith("percentageofweight")){

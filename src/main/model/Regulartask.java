@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Regulartask extends Task {
 
 
-    public Regulartask(int number, String content, String course, String type, String date, int timeneeded) {
+    public Regulartask(int number, String content, String course, String type, String date, double timeneeded) {
         super(number, content, course, type, date, timeneeded);
     }
 
@@ -18,12 +18,7 @@ public class Regulartask extends Task {
     @Override
     public String toString() {
         return "Regulartask" +"\n" +
-                "number: " + number  +"\n" +
-                "content: " + content +"\n" +
-                "course: " + course  +"\n" +
-                "date: " + date  +"\n" +
-                "type: " + type  + "\n" +
-                "timeneeded: " + timeneeded + "\n";
+                printcontent();
     }
 
 
@@ -56,7 +51,7 @@ public class Regulartask extends Task {
             }else if(s.startsWith("type")){
                 type = s.substring(6);
             }else if(s.startsWith("timeneeded")){
-                timeneeded = Integer.parseInt(s.substring(12));
+                timeneeded = Double.parseDouble(s.substring(12));
             }
         }
     }

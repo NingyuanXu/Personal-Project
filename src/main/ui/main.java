@@ -49,9 +49,11 @@ public class main {
                     System.out.println("You entered a negative number!");
                 }catch (TooManyThingsToDoException e) {
                     System.out.println("You have too many things to do.");
+                }finally {
+                    System.out.println("Please enter your option.");
                 }
 
-                System.out.println("Please enter your option.");
+
 
             } else if (operation.equals("2")) {
                 try {
@@ -62,8 +64,10 @@ public class main {
                     }
                 } catch (TooManyThingsToDoException e) {
                     System.out.println("You have too many things to do.");
+                }finally {
+                    System.out.println("Please enter your option.");
                 }
-                System.out.println("Please enter your option.");
+
 
             } else if (operation.equals("3")) {
                 try {
@@ -74,8 +78,10 @@ public class main {
                     }
                 } catch (TooManyThingsToDoException e) {
                     System.out.println("You have too many things to do.");
+                }finally {
+                    System.out.println("Please enter your option.");
                 }
-                System.out.println("Please enter your option.");
+
 
             } else if (operation.equals("4")) {
 
@@ -100,8 +106,10 @@ public class main {
                 } catch (ItemNotThereException e) {
                     System.out.println("ITEM NOT FOUND!");
 
+                }finally {
+                    System.out.println("Please enter your option.");
                 }
-                System.out.println("Please enter your option.");
+
 
 
             } else if (operation.equals("6")) {
@@ -117,8 +125,10 @@ public class main {
                 } catch (ItemNotThereException e) {
                     System.out.println("ITEM NOT FOUND!");
 
+                }finally {
+                    System.out.println("Please enter your option.");
                 }
-                System.out.println("Please enter your option.");
+
 
             } else if (operation.equals("quit")) {
                 PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");

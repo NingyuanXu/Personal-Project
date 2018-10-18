@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 public class TestAssignmentTodo {
@@ -38,7 +39,7 @@ public class TestAssignmentTodo {
     @Test
 
     public void testAddRegularTask() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\ns\ns\n3\np\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
         try {
             todo = new AssignmentTodo(false);
@@ -61,7 +62,7 @@ public class TestAssignmentTodo {
     @Test
 
     public void testAddOptionalTask() {
-        ByteArrayInputStream in = new ByteArrayInputStream("3\ns\ns\ns\ns\ns\n3\np\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("3\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
         try {
             todo = new AssignmentTodo(false);
@@ -81,33 +82,33 @@ public class TestAssignmentTodo {
 
     }
 
-//    @Test
-//
-//    public void testAddUrgentTask() {
-//        ByteArrayInputStream in = new ByteArrayInputStream("2\ns\ns\ns\ns\ns\ns\n2\n2\n2\n".getBytes());
-//        System.setIn(in);
-//        try {
-//            todo = new AssignmentTodo(false);
-//        } catch (Exception e) {
-//
-//        }
-//        try {
-//            try {
-//                todo.addurgentrtask();
-//            } catch (NegativeNumberException e) {
-//                e.printStackTrace();
-//            }
-//        } catch (TooManyThingsToDoException e) {
-//            fail("No exceptions thrown!");
-//        }
-//        assertEquals(todo.todoList.size(), 1);
-//
-//    }
+    @Test
+
+    public void testAddUrgentTask() {
+        ByteArrayInputStream in = new ByteArrayInputStream("2\ns\ns\ns\n2\n6\n3\n3\ns\n".getBytes());
+        System.setIn(in);
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
+
+        }
+        try {
+            try {
+                todo.addurgentrtask();
+            } catch (NegativeNumberException e) {
+                e.printStackTrace();
+            }
+        } catch (TooManyThingsToDoException e) {
+            fail("No exceptions thrown!");
+        }
+        assertEquals(todo.todoList.size(), 1);
+
+    }
 
     @Test
 
     public void testAddRegularTaskNegativeNumberForTimeneeded() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\ns\ns\n-3\np\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n-3\np\n".getBytes());
         System.setIn(in);
         try {
             todo = new AssignmentTodo(false);
@@ -131,7 +132,7 @@ public class TestAssignmentTodo {
     @Test
 
     public void testRemoveTaskItemFound() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\ns\ns\n3\np\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
         try {
             todo = new AssignmentTodo(false);
@@ -160,7 +161,7 @@ public class TestAssignmentTodo {
     @Test
 
     public void testRemoveTaskItemNotFound() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\ns\ns\n3\np\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
         try {
             todo = new AssignmentTodo(false);
@@ -190,7 +191,7 @@ public class TestAssignmentTodo {
     @Test
 
     public void testRetrieveTaskItemFound() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\ns\ns\n3\np\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
         try {
             todo = new AssignmentTodo(false);
@@ -228,7 +229,7 @@ public class TestAssignmentTodo {
     @Test
 
     public void testRetrieveTaskItemNotFound() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\ns\ns\n3\np\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
         System.setIn(in);
         try {
             todo = new AssignmentTodo(false);
@@ -266,71 +267,92 @@ public class TestAssignmentTodo {
     }
 
 
-//    @Test
-//
-//    public void testAddUrgentTaskNegativeNumberForTLevelOfUrgency() {
-//        ByteArrayInputStream in = new ByteArrayInputStream("2\ns\ns\ns\ns\ns\n3\np\n-3\n4\n".getBytes());
-//        System.setIn(in);
-//        try {
-//            todo = new AssignmentTodo(false);
-//        } catch (Exception e) {
-//
-//        }
-//        try {
-//            try {
-//                todo.addurgentrtask();
-//                fail("Exceptions Thrown!");
-//            } catch (NegativeNumberException e) {
-//
-//            }
-//        } catch (TooManyThingsToDoException e) {
-//            fail("No exceptions thrown!");
-//        }
-//        assertEquals(todo.todoList.size(), 0);
-//
-//    }
-//
-//    @Test
-//
-//    public void testAddUrgentTaskNegativeNumberForPercentageOfWeight() {
-//        ByteArrayInputStream in = new ByteArrayInputStream("2\ns\ns\ns\ns\ns\n3\np\n3\n-4\n".getBytes());
-//        System.setIn(in);
-//        try {
-//            todo = new AssignmentTodo(false);
-//        } catch (Exception e) {
-//
-//        }
-//        try {
-//            try {
-//                todo.addurgentrtask();
-//                fail("Exceptions Thrown!");
-//            } catch (NegativeNumberException e) {
-//
-//            }
-//        } catch (TooManyThingsToDoException e) {
-//            fail("No exceptions thrown!");
-//        }
-//        assertEquals(todo.todoList.size(), 0);
-//
-//    }
-//    @Test
-//
-//    public void testAddRegularTaskTooManyTasksToDo() {
-//        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\ns\ns\n3\np\n3\n4\n1\ns\ns\ns\ns\ns\n3\np\n3\n4\n1\ns\ns\ns\ns\ns\n3\np\n3\n4\n1\ns\ns\ns\ns\ns\n3\np\n3\n4\n1\ns\ns\ns\ns\ns\n3\np\n3\n4\n".getBytes());
-//        try {
-//            todo = new AssignmentTodo(false);
-//        } catch (Exception e) {
-//
-//        }
-//        try {
-//            todo.addregulartask();
-//            fail("Exceptions are caught");
-//        } catch (TooManyThingsToDoException e) {
-//
-//        }
-//        assertEquals(todo.todoList.size(), 5);
-//
-//    }
+    @Test
+
+    public void testAddUrgentTaskNegativeNumberForTLevelOfUrgency() {
+        ByteArrayInputStream in = new ByteArrayInputStream("2\ns\ns\ns\n2\n-6\n3\n3\ns\n".getBytes());
+        System.setIn(in);
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
+
+        }
+        try {
+            try {
+                todo.addurgentrtask();
+                fail("Exceptions Thrown!");
+            } catch (NegativeNumberException e) {
+
+            }
+        } catch (TooManyThingsToDoException e) {
+            fail("No exceptions thrown!");
+        }
+        assertEquals(todo.todoList.size(), 0);
+
+    }
+
+    @Test
+
+    public void testAddUrgentTaskNegativeNumberForPercentageOfWeight() {
+        ByteArrayInputStream in = new ByteArrayInputStream("2\ns\ns\ns\n2\n6\n-3\n3\ns\n".getBytes());
+        System.setIn(in);
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
+
+        }
+        try {
+            try {
+                todo.addurgentrtask();
+                fail("Exceptions Thrown!");
+            } catch (NegativeNumberException e) {
+
+            }
+        } catch (TooManyThingsToDoException e) {
+            fail("No exceptions thrown!");
+        }
+        assertEquals(todo.todoList.size(), 0);
+
+    }
+    @Test
+
+    public void testAddRegularTaskTooManyTasksToDo() {
+        try {
+            todo = new AssignmentTodo(false);
+        } catch (Exception e) {
+
+        }
+        for(int i =0; i<5; i++) {
+            try {
+                addRegularTask(todo);
+            } catch (NegativeNumberException e) {
+                e.printStackTrace();
+            }catch (TooManyThingsToDoException e) {
+                fail("No exceptions thrown!");
+            }
+        }
+        assertEquals(todo.todoList.size(), 5);
+
+        try {
+            addRegularTask(todo);
+            fail("llll");
+        }catch (TooManyThingsToDoException e){
+           //
+
+        }catch (NegativeNumberException e){
+            fail("hhhh");
+
+        }
+
+
+    }
+
+    private void addRegularTask(AssignmentTodo todo) throws TooManyThingsToDoException, NegativeNumberException {
+        ByteArrayInputStream in = new ByteArrayInputStream("1\ns\ns\ns\n3\np\n".getBytes());
+        System.setIn(in);
+        todo.addregulartask();
+
+        }
 }
 
 

@@ -79,4 +79,9 @@ public class Urgenttask extends Task {
             }
         }
     }
+
+    @Override
+    public void load() {
+
+    }
 }

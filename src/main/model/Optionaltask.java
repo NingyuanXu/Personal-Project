@@ -52,4 +52,9 @@ public class Optionaltask extends Task {
             }
         }
     }
+
+    @Override
+    public void load() {
+
+    }
 }

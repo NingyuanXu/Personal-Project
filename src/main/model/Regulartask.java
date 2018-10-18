@@ -55,6 +55,11 @@ public class Regulartask extends Task {
             }
         }
     }
+
+    @Override
+    public void load() {
+
+    }
 }
 
 

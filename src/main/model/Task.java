@@ -1,10 +1,11 @@
 package main.model;
 
 import implementations.Dailytask;
+import implementations.Loadable;
 
 import java.util.ArrayList;
 
-public abstract class Task implements Dailytask {
+public abstract class Task implements Dailytask, Loadable {
     protected int number;
     protected String content;
     protected String course;

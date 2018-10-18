@@ -4,6 +4,8 @@ package main.model;
 import exceptions.ItemNotThereException;
 import exceptions.NegativeNumberException;
 import exceptions.TooManyThingsToDoException;
+import implementations.Loadable;
+import implementations.Savable;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -14,10 +16,10 @@ import java.util.Scanner;
 import static java.nio.file.Files.readAllLines;
 
 
-public class AssignmentTodo  {
+public class AssignmentTodo implements Loadable, Savable {
     public ArrayList<Task> todoList = new ArrayList<>();
     public ArrayList<Task> crossoffList = new ArrayList<>();
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
     public int Number = 1;
 
     public AssignmentTodo(boolean load) throws IOException {
@@ -116,24 +118,26 @@ public class AssignmentTodo  {
     // then add the regular task t into todoList
 
     public void addregulartask() throws TooManyThingsToDoException, NegativeNumberException {
+        scanner = new Scanner(System.in);
         Task t = new Regulartask(Number, "", "", "","" , Number);
         System.out.println("Please enter the regular assignment in text.");
-        String content = scanner.next() + scanner.next();
+        String content = scanner.nextLine();
         t.setContent(content);
         System.out.println("Please enter the course of the assignment.");
-        String course = scanner.next()+ scanner.next();
+        String course = scanner.nextLine();
         t.setCourse(course);
         System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
-        String type = scanner.next();
+        String type = scanner.nextLine();
         t.setType(type);
         System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
-        String date = scanner.next();
+        String date = scanner.nextLine();
         t.setDate(date);
         System.out.println("Please enter the time needed for the assignment.");
-        double timeneeded = scanner.nextDouble();
+        double timeneeded = Double.parseDouble(scanner.nextLine());
         if (timeneeded<0)
         throw new NegativeNumberException();
         t.setTimeneeded(timeneeded);
+        assert(timeneeded>0);
         if (todoList.size()>=5)
          throw new TooManyThingsToDoException();
         System.out.println("The assignment " + Number + " is added successfully!");
@@ -146,34 +150,38 @@ public class AssignmentTodo  {
     // then add the urgent task t into todoList
 
     public void addurgentrtask() throws TooManyThingsToDoException, NegativeNumberException {
+        scanner = new Scanner(System.in);
         Urgenttask t2 = new Urgenttask(Number, "", "", "", "", Number,Number,Number);
         System.out.println("Please enter the URGENT assignment in text.");
-        String content = scanner.next() + scanner.next();
+        String content = scanner.nextLine();
         t2.setContent(content);
         System.out.println("Please enter the course of the assignment.");
-        String course = scanner.next()+ scanner.next();
+        String course = scanner.nextLine();
         t2.setCourse(course);
         System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
-        String type = scanner.next();
+        String type = scanner.nextLine();
         t2.setType(type);
         System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
-        String date = scanner.next();
+        String date = scanner.nextLine();
         t2.setDate(date);
         System.out.println("Please enter the time needed for the assignment.");
-        double timeneeded = scanner.nextDouble();
+        double timeneeded = Double.parseDouble(scanner.nextLine());
         if (timeneeded<0)
             throw new NegativeNumberException();
         t2.setTimeneeded(timeneeded);
+        assert(timeneeded>0);
         System.out.println("Please enter the level of urgency for the assignment, from 0-10");
-        int levelofurgency = scanner.nextInt();
+        int levelofurgency = Integer.parseInt(scanner.nextLine());
         if (levelofurgency<0)
             throw new NegativeNumberException();
         t2.setLevelofurgency(levelofurgency);
+        assert(levelofurgency>0);
         System.out.println("Please enter the percentage of weight for the assignment in the final, eg. 30");
-        int percentageofweight = scanner.nextInt();
+        int percentageofweight = Integer.parseInt(scanner.nextLine());
         if (percentageofweight<0)
             throw new NegativeNumberException();
         t2.setPercentageofweight(percentageofweight);
+        assert(percentageofweight>0);
         if (todoList.size()>=5)
             throw new TooManyThingsToDoException();
         System.out.println("The assignment " + Number + " is added successfully!");
@@ -186,24 +194,26 @@ public class AssignmentTodo  {
     // then add the optional task t into todoList
 
     public void addoptionaltask() throws TooManyThingsToDoException, NegativeNumberException {
+        scanner = new Scanner(System.in);
         Task t3 = new Optionaltask(Number, "", "", "", "", Number);
         System.out.println("Please enter the OPTIONAL assignment in text.");
-        String content = scanner.next() + scanner.next();
+        String content = scanner.nextLine();
         t3.setContent(content);
         System.out.println("Please enter the course of the assignment.");
-        String course = scanner.next()+ scanner.next();
+        String course = scanner.nextLine();
         t3.setCourse(course);
         System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
-        String type = scanner.next();
+        String type = scanner.nextLine();
         t3.setType(type);
         System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
-        String date = scanner.next();
+        String date = scanner.nextLine();
         t3.setDate(date);
         System.out.println("Please enter the time needed for the assignment.");
-        double timeneeded = scanner.nextDouble();
+        double timeneeded = Integer.parseInt(scanner.nextLine());
         if (timeneeded<0)
             throw new NegativeNumberException();
         t3.setTimeneeded(timeneeded);
+        assert(timeneeded>0);
         if (todoList.size()>=5)
             throw new TooManyThingsToDoException();
         System.out.println("The assignment " + Number + " is added successfully!");
@@ -212,7 +222,15 @@ public class AssignmentTodo  {
     }
 
 
+    @Override
+    public void load() {
 
+    }
+
+    @Override
+    public void save() {
+
+    }
 }
 
 

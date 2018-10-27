@@ -322,7 +322,7 @@ public class TestAssignmentTodo {
         } catch (Exception e) {
 
         }
-        for(int i =0; i<5; i++) {
+        for(int i =0; i<10; i++) {
             try {
                 addRegularTask(todo);
             } catch (NegativeNumberException e) {
@@ -331,7 +331,7 @@ public class TestAssignmentTodo {
                 fail("No exceptions thrown!");
             }
         }
-        assertEquals(todo.todoList.size(), 5);
+        assertEquals(todo.todoList.size(), 10);
 
         try {
             addRegularTask(todo);

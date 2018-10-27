@@ -9,16 +9,14 @@ import implementations.Savable;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.nio.file.Files.readAllLines;
 
 
 public class AssignmentTodo implements Loadable, Savable {
-    public ArrayList<Task> todoList = new ArrayList<>();
-    public ArrayList<Task> crossoffList = new ArrayList<>();
+    public LinkedList<Task> todoList = new LinkedList<>();
+    public LinkedList<Task> crossoffList = new LinkedList<>();
     Scanner scanner;
     public int Number = 1;
 
@@ -138,7 +136,7 @@ public class AssignmentTodo implements Loadable, Savable {
         throw new NegativeNumberException();
         t.setTimeneeded(timeneeded);
         assert(timeneeded>0);
-        if (todoList.size()>=5)
+        if (todoList.size()>=10)
          throw new TooManyThingsToDoException();
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t);
@@ -182,7 +180,7 @@ public class AssignmentTodo implements Loadable, Savable {
             throw new NegativeNumberException();
         t2.setPercentageofweight(percentageofweight);
         assert(percentageofweight>0);
-        if (todoList.size()>=5)
+        if (todoList.size()>=10)
             throw new TooManyThingsToDoException();
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t2);
@@ -214,7 +212,7 @@ public class AssignmentTodo implements Loadable, Savable {
             throw new NegativeNumberException();
         t3.setTimeneeded(timeneeded);
         assert(timeneeded>0);
-        if (todoList.size()>=5)
+        if (todoList.size()>=10)
             throw new TooManyThingsToDoException();
         System.out.println("The assignment " + Number + " is added successfully!");
         todoList.add(t3);

@@ -4,6 +4,8 @@ import main.model.Regulartask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,13 +15,13 @@ public class TestTask {
     private Regulartask regulartask;
 
     @BeforeEach
-    public void runBefore() {
+    public void runBefore() throws IOException {
         regulartask = new Regulartask(Number, "", "", "", "", Number);
     }
 
     @Test
 
-    public void testConstructor() {
+    public void testConstructor() throws IOException {
         Regulartask regulartask = new Regulartask(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
         assertEquals(regulartask.getNumber(), 1);
         assertEquals(regulartask.getContent(), "Webwork3");

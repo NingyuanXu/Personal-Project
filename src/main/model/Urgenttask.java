@@ -1,5 +1,6 @@
 package main.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Urgenttask extends Task {
@@ -8,11 +9,11 @@ public class Urgenttask extends Task {
     private int percentageofweight;
 
 
-    public Urgenttask(int number, String content, String course, String type, String date, int number1, int i, double timeneeded) {
+    public Urgenttask(int number, String content, String course, String type, String date, int number1, int i, double timeneeded) throws IOException {
         super(number, content, course, type, date, timeneeded);
     }
 
-    public Urgenttask(int number, String content, String course, String type, String date, double timeneeded, int levelofurgency) {
+    public Urgenttask(int number, String content, String course, String type, String date, double timeneeded, int levelofurgency) throws IOException {
         super(number, content, course, type, date, timeneeded);
         this.levelofurgency = levelofurgency;
         this.percentageofweight = percentageofweight;

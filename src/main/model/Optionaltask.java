@@ -1,9 +1,10 @@
 package main.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Optionaltask extends Task {
-    public Optionaltask(int number, String content, String course, String type, String date, double timeneeded) {
+    public Optionaltask(int number, String content, String course, String type, String date, double timeneeded) throws IOException {
         super(number, content, course, type, date, timeneeded);
     }
     public Optionaltask(ArrayList<String> data){

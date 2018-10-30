@@ -4,6 +4,8 @@ import implementations.Dailytask;
 import implementations.Loadable;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public abstract class Task implements Dailytask, Loadable {
     protected int number;
@@ -12,15 +14,16 @@ public abstract class Task implements Dailytask, Loadable {
     protected String date;
     protected String type;
     protected double timeneeded;
+    protected List<TodoList> todos;
 
-
-    public Task(int number, String content, String course, String type, String date, double timeneeded) {
+    public Task(int number, String content, String course, String type, String date, double timeneeded)  {
         this.number = number;
         this.content = content;
         this.course = course;
         this.date = date;
         this.type = type;
         this.timeneeded = timeneeded;
+        todos= new ArrayList<>();
     }
 
     public Task(ArrayList<String> data){
@@ -37,6 +40,12 @@ public abstract class Task implements Dailytask, Loadable {
                         "date: " + date  +"\n"+
                         "type: " + type  +"\n"+
                         "timeneeded: " + timeneeded +"\n";}
+
+    public void addTodoList(TodoList t) {
+        if (!todos.contains(t)) {
+            todos.add(t);
+        }
+    }
 
     // EFFECTS: get the number for the task
     public int getNumber() {
@@ -55,6 +64,7 @@ public abstract class Task implements Dailytask, Loadable {
     public String getCourse() {
         return course;
     }
+
 
     // EFFECTS: get the date for the task
 
@@ -111,6 +121,25 @@ public abstract class Task implements Dailytask, Loadable {
 
     public void setTimeneeded(double timeneeded) {
         this.timeneeded = timeneeded;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return number == task.number &&
+                Double.compare(task.timeneeded, timeneeded) == 0 &&
+                Objects.equals(content, task.content) &&
+                Objects.equals(course, task.course) &&
+                Objects.equals(date, task.date) &&
+                Objects.equals(type, task.type);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(number, content, course, date, type, timeneeded);
     }
 
     protected abstract void load(ArrayList<String> data);

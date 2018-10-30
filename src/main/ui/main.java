@@ -3,7 +3,7 @@ package main.ui;
 import exceptions.ItemNotThereException;
 import exceptions.NegativeNumberException;
 import exceptions.TooManyThingsToDoException;
-import main.model.AssignmentTodo;
+import main.model.Operation;
 import main.model.Task;
 
 import java.io.IOException;
@@ -21,10 +21,10 @@ public class main {
         Scanner scanner = new Scanner(System.in);
         String operation;
 
-        AssignmentTodo todo = new AssignmentTodo(true);
+        Operation todo = new Operation(true);
 
 
-        System.out.println("\nWelcome to my project! This is an AssignmentTodo App.");
+        System.out.println("\nWelcome to my project! This is an Operation App.");
 
         System.out.println("\nWhat would you like to do\n " +
                 "\n[1] add a REGULAR assignment to the Todo list." +
@@ -86,7 +86,7 @@ public class main {
             } else if (operation.equals("4")) {
 
 
-                for(Task task: todo.todoList){
+                for(Task task: todo.todoList.getTodoList()){
                     System.out.println(task.toString());
 
                 }
@@ -95,7 +95,7 @@ public class main {
 
             } else if (operation.equals("5")) {
 
-                for (Task task : todo.todoList) {
+                for (Task task : todo.todoList.getTodoList()) {
                     System.out.println(task.toString());
 
                 }
@@ -114,7 +114,7 @@ public class main {
 
             } else if (operation.equals("6")) {
 
-                for (Task task : todo.crossoffList) {
+                for (Task task : todo.crossoffList.crossoffList) {
                     System.out.println(task.toString());
 
                 }
@@ -132,8 +132,8 @@ public class main {
 
             } else if (operation.equals("quit")) {
                 PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");
-                writer.println(todo.Number);
-                for(Task task:todo.todoList){
+                writer.println(todo.todoList.Number);
+                for(Task task: todo.todoList.getTodoList()){
                     writer.println(task.toString());
                 }
                 writer.close();

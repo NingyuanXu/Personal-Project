@@ -74,8 +74,8 @@ public class TodoList {
         {todoList.add(t);
         t.addTodoList(this);
         taskMap.put(Number,t);
-        Number++;
         System.out.println("The assignment " + Number + " is added successfully!");
+        Number++;
         }
     }
 
@@ -118,8 +118,8 @@ public class TodoList {
         {todoList.add(t2);
         t2.addTodoList(this);
         taskMap.put(Number,t2);
-        Number++;
         System.out.println("The assignment " + Number + " is added successfully!");
+        Number++;
         }
     }
 
@@ -150,8 +150,8 @@ public class TodoList {
         {todoList.add(t3);
         t3.addTodoList(this);
         taskMap.put(Number,t3);
-        Number++;
         System.out.println("The assignment " + Number + " is added successfully!");
+        Number++;
         }
     }
 

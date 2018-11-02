@@ -72,7 +72,7 @@ public class main {
             } else if (operation.equals("3")) {
                 try {
                     try {
-                        todo.addurgentrtask();
+                        todo.addoptionaltask();
                     } catch (NegativeNumberException e) {
                         System.out.println("You entered a negative number!");
                     }

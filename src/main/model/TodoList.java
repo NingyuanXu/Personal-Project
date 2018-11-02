@@ -48,6 +48,19 @@ public class TodoList {
     }
 
     public void addregulartask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
+        Task t = addTaskHelper();
+        if (todoList.size() >= 10)
+            throw new TooManyThingsToDoException();
+        if (!todoList.contains(t))
+        {todoList.add(t);
+        t.addTodoList(this);
+        taskMap.put(Number,t);
+        System.out.println("The assignment " + Number + " is added successfully!");
+        Number++;
+        }
+    }
+
+    private Task addTaskHelper() throws IOException, NegativeNumberException {
         scanner = new Scanner(System.in);
         Task t = new Regulartask(Number, "", "", "", "", Number);
         System.out.println("Please enter the regular assignment in text.");
@@ -68,15 +81,7 @@ public class TodoList {
             throw new NegativeNumberException();
         t.setTimeneeded(timeneeded);
         assert (timeneeded > 0);
-        if (todoList.size() >= 10)
-            throw new TooManyThingsToDoException();
-        if (!todoList.contains(t))
-        {todoList.add(t);
-        t.addTodoList(this);
-        taskMap.put(Number,t);
-        System.out.println("The assignment " + Number + " is added successfully!");
-        Number++;
-        }
+        return t;
     }
 
     public void addurgentrtask() throws TooManyThingsToDoException, NegativeNumberException, IOException {

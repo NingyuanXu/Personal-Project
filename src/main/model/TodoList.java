@@ -12,7 +12,7 @@ public class TodoList {
     public List<Task> todoList = new ArrayList<Task>();
     public Scanner scanner;
     public int Number = 1;
-    public Map<Integer,Task > taskMap  = new HashMap<>();
+    public static Map<Integer,Task > taskMap  = new HashMap<>();
 
 
     public TodoList(Operation operation) {
@@ -47,6 +47,7 @@ public class TodoList {
         if (taskMap.containsKey(num)) {
             todoList.remove(taskMap.get(num));
             operation.getCrossoffList().crossoffList.add(taskMap.get(num));
+            taskMap.remove(num);
             System.out.println("The item you selected has been deleted from the Todo List.\n");
             System.out.println("You have " + todoList.size() + " items left in your TodoList");
         }

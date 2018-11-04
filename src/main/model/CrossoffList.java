@@ -25,6 +25,7 @@ public class CrossoffList {
                 itemThere = true;
                 crossoffList.remove(t);
                 operation.getTodoList().add(t);
+                TodoList.taskMap.put(num,t);
                 break;
             }
         }

@@ -19,7 +19,7 @@ public class Regulartask extends Task {
     @Override
     public String toString() {
         return "Regulartask" +"\n" +
-                printcontent();
+                messagePrinter.printcontent();
     }
 
 

@@ -1,27 +1,27 @@
 4
 Regulartask
 number: 1
-content: d
-course: e
-date: e
-type: f
+content: ss
+course: 2
+date: 2
+type: 2
 timeneeded: 2.0
 
 Urgenttask
 number: 2
 content: d
-course: c
-date: 2
-type: e
-timeneeded: 3.0
-levelofurgency: 3
+course: d
+date: d
+type: d
+timeneeded: 2.0
+levelofurgency: 2
 percentageofweight: 2
 
 Optionaltask
 number: 3
-content: s
-course: x
-date: 3
-type: e
-timeneeded: 4.0
+content: d
+course: d
+date: 2
+type: d
+timeneeded: 3.0
 

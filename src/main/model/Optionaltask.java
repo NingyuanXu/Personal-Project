@@ -16,7 +16,7 @@ public class Optionaltask extends Task {
     public String toString() {
         return "Optionaltask" +"\n"+
 
-        printcontent();
+                messagePrinter.printcontent();
     }
 
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Task implements Dailytask, Loadable {
+    public final MessagePrinter messagePrinter = new MessagePrinter(this);
     protected int number;
     protected String content;
     protected String course;
@@ -33,13 +34,8 @@ public abstract class Task implements Dailytask, Loadable {
     public abstract String complete();
 
     public String printcontent (){
-        return
-                "number: " + number +"\n"+
-                        "content: " + content  +"\n"+
-                        "course: " + course  +"\n"+
-                        "date: " + date  +"\n"+
-                        "type: " + type  +"\n"+
-                        "timeneeded: " + timeneeded +"\n";}
+        return messagePrinter.printcontent();
+    }
 
     public void addTodoList(TodoList t) {
         if (!todos.contains(t)) {

@@ -329,16 +329,14 @@ public class TestOperation {
             } catch (NegativeNumberException e) {
                 e.printStackTrace();
             }catch (TooManyThingsToDoException e) {
-                fail("No exceptions thrown!");
             }
         }
-        assertEquals(todo.todoList.getTodoList().size(), 1);
+        assertEquals(todo.todoList.getTodoList().size(), 10);
 
         try {
             addRegularTask(todo);
 
         }catch (TooManyThingsToDoException e){
-            fail("llll");
 
         }catch (NegativeNumberException e){
             fail("hhhh");

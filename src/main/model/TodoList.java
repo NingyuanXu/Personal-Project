@@ -23,13 +23,21 @@ public class TodoList {
     public void buildTask(String currentClass, ArrayList<String> temp) {
         if (currentClass != "") {
             if (currentClass.equals("Regulartask")) {
-                todoList.add(new Regulartask(temp));
+                Regulartask r = new Regulartask(temp);
+                todoList.add(r);
+                taskMap.put(r.getNumber(),r);
             }
             if (currentClass.equals("Optionaltask")) {
-                todoList.add(new Optionaltask(temp));
+                Optionaltask o = new Optionaltask(temp);
+                todoList.add(o);
+                taskMap.put(o.getNumber(),o);
+
             }
             if (currentClass.equals("Urgenttask")) {
-                todoList.add(new Urgenttask(temp));
+                Urgenttask u = new Urgenttask(temp);
+                todoList.add(u);
+                taskMap.put(u.getNumber(),u);
+
             }
         }
     }
@@ -41,31 +49,44 @@ public class TodoList {
             operation.getCrossoffList().crossoffList.add(taskMap.get(num));
             System.out.println("The item you selected has been deleted from the Todo List.\n");
             System.out.println("You have " + todoList.size() + " items left in your TodoList");
-
-        } else {
-            throw new ItemNotThereException();
         }
+       else {throw new ItemNotThereException();}
+
     }
+
 
     public void addregulartask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
-        Task t = addTaskHelper();
-        if (todoList.size() >= 10)
-            throw new TooManyThingsToDoException();
-        if (!todoList.contains(t))
-        {todoList.add(t);
-        t.addTodoList(this);
-        taskMap.put(Number,t);
-        System.out.println("The assignment " + Number + " is added successfully!");
-        Number++;
-        }
-    }
-
-    private Task addTaskHelper() throws IOException, NegativeNumberException {
         scanner = new Scanner(System.in);
         Task t = new Regulartask(Number, "", "", "", "", Number);
         System.out.println("Please enter the regular assignment in text.");
         String content = scanner.nextLine();
         t.setContent(content);
+        addTaskHelperOne(t);
+        addTaskHelperTwo(t);
+    }
+
+    public void addurgentrtask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
+        scanner = new Scanner(System.in);
+        Urgenttask t2 = new Urgenttask(Number, "", "", "", "", Number, Number, Number);
+        System.out.println("Please enter the URGENT assignment in text.");
+        String content = scanner.nextLine();
+        t2.setContent(content);
+        addTaskHelperOne(t2);
+        addUrgentTaskHelper(t2);
+        addTaskHelperTwo(t2);
+    }
+
+    public void addoptionaltask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
+        scanner = new Scanner(System.in);
+        Task t3 = new Optionaltask(Number, "", "", "", "", Number);
+        System.out.println("Please enter the optional assignment in text.");
+        String content = scanner.nextLine();
+        t3.setContent(content);
+        addTaskHelperOne(t3);
+        addTaskHelperTwo(t3);
+    }
+
+    private void addTaskHelperOne(Task t) throws NegativeNumberException {
         System.out.println("Please enter the course of the assignment.");
         String course = scanner.nextLine();
         t.setCourse(course);
@@ -81,30 +102,23 @@ public class TodoList {
             throw new NegativeNumberException();
         t.setTimeneeded(timeneeded);
         assert (timeneeded > 0);
-        return t;
     }
 
-    public void addurgentrtask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
-        scanner = new Scanner(System.in);
-        Urgenttask t2 = new Urgenttask(Number, "", "", "", "", Number, Number, Number);
-        System.out.println("Please enter the URGENT assignment in text.");
-        String content = scanner.nextLine();
-        t2.setContent(content);
-        System.out.println("Please enter the course of the assignment.");
-        String course = scanner.nextLine();
-        t2.setCourse(course);
-        System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
-        String type = scanner.nextLine();
-        t2.setType(type);
-        System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
-        String date = scanner.nextLine();
-        t2.setDate(date);
-        System.out.println("Please enter the time needed for the assignment.");
-        double timeneeded = Double.parseDouble(scanner.nextLine());
-        if (timeneeded < 0)
-            throw new NegativeNumberException();
-        t2.setTimeneeded(timeneeded);
-        assert (timeneeded > 0);
+    private void addTaskHelperTwo(Task t) throws TooManyThingsToDoException {
+        if (todoList.size() >= 10)
+            throw new TooManyThingsToDoException();
+        if (!todoList.contains(t)) {
+            todoList.add(t);
+            t.addTodoList(this);
+            taskMap.put(Number, t);
+            System.out.println("The assignment " + Number + " is added successfully!");
+            Number++;
+        }
+    }
+
+
+
+    private void addUrgentTaskHelper(Urgenttask t2) throws NegativeNumberException {
         System.out.println("Please enter the level of urgency for the assignment, from 0-10");
         int levelofurgency = Integer.parseInt(scanner.nextLine());
         if (levelofurgency < 0)
@@ -117,48 +131,12 @@ public class TodoList {
             throw new NegativeNumberException();
         t2.setPercentageofweight(percentageofweight);
         assert (percentageofweight > 0);
-        if (todoList.size() >= 10)
-            throw new TooManyThingsToDoException();
-        if (!todoList.contains(t2))
-        {todoList.add(t2);
-        t2.addTodoList(this);
-        taskMap.put(Number,t2);
-        System.out.println("The assignment " + Number + " is added successfully!");
-        Number++;
-        }
     }
 
-    public void addoptionaltask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
-        scanner = new Scanner(System.in);
-        Task t3 = new Optionaltask(Number, "", "", "", "", Number);
-        System.out.println("Please enter the OPTIONAL assignment in text.");
-        String content = scanner.nextLine();
-        t3.setContent(content);
-        System.out.println("Please enter the course of the assignment.");
-        String course = scanner.nextLine();
-        t3.setCourse(course);
-        System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
-        String type = scanner.nextLine();
-        t3.setType(type);
-        System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
-        String date = scanner.nextLine();
-        t3.setDate(date);
-        System.out.println("Please enter the time needed for the assignment.");
-        double timeneeded = Integer.parseInt(scanner.nextLine());
-        if (timeneeded < 0)
-            throw new NegativeNumberException();
-        t3.setTimeneeded(timeneeded);
-        assert (timeneeded > 0);
-        if (todoList.size() >= 10)
-            throw new TooManyThingsToDoException();
-        if (!todoList.contains(t3))
-        {todoList.add(t3);
-        t3.addTodoList(this);
-        taskMap.put(Number,t3);
-        System.out.println("The assignment " + Number + " is added successfully!");
-        Number++;
-        }
-    }
+
+
+
+
 
     public List<Task> getTodoList() {
         return todoList;

@@ -27,7 +27,7 @@ public class Urgenttask extends Task {
     @Override
     public String toString() {
         return "Urgenttask" +"\n"+
-                printcontent()+
+                messagePrinter.printcontent() +
             "levelofurgency: " + levelofurgency +"\n"+
             "percentageofweight: " + percentageofweight +"\n";
 }
@@ -48,10 +48,10 @@ public class Urgenttask extends Task {
 
 
 
+
     public void setLevelofurgency(int levelofurgency) {
         this.levelofurgency = levelofurgency;
     }
-
 
 
     public void setPercentageofweight(int percentageofweight) {

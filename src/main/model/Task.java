@@ -31,6 +31,8 @@ public abstract class Task implements Dailytask, Loadable {
         load(data);
     }
 
+
+
     public abstract String complete();
 
     public String printcontent (){

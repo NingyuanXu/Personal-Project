@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CrossoffList {
     private final Operation operation;
-    public List<Task> crossoffList = new ArrayList<>();
+    public List<Assignment> crossoffList = new ArrayList<>();
 
     public CrossoffList(Operation operation) {
         this.operation = operation;
@@ -20,7 +20,7 @@ public class CrossoffList {
         boolean itemThere = false;
 
 
-        for (Task t : crossoffList) {
+        for (Assignment t : crossoffList) {
             if (t.getNumber() == num) {
                 itemThere = true;
                 crossoffList.remove(t);

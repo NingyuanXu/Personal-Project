@@ -1,41 +1,38 @@
 package main.model;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Regulartask extends Task {
-
-
-    public Regulartask(int number, String content, String course, String type, String date, double timeneeded) throws IOException {
+public class OptionalAssignment extends Assignment {
+    public OptionalAssignment(int number, String content, String course, String type, String date, double timeneeded) throws IOException {
         super(number, content, course, type, date, timeneeded);
     }
-
-    public Regulartask(ArrayList<String> data){
+    public OptionalAssignment(ArrayList<String> data){
         super(data);
     }
 
 
     @Override
     public String toString() {
-        return "Regulartask" +"\n" +
+        return "OptionalAssignment" +"\n"+
+
                 messagePrinter.printcontent();
     }
 
 
-    @Override
-    public String setreminder() {
-        String s2 = "You still have regular tasks to do";
-        System.out.println(s2);
-        return s2;
-    }
 
     @Override
     public String complete() {
+        String optionalstring = "The optional task "+messagePrinter.complete();
+        System.out.println(optionalstring);
+        return optionalstring;
+    }
 
-        String regularstring = "The regular task has been completed.";
-        System.out.println(regularstring);
-        return regularstring;
+    @Override
+    public String setreminder() {
+        String s3 = " optional tasks to do"+messagePrinter.setreminder();
+        System.out.println(s3);
+        return s3;
     }
 
     @Override
@@ -57,17 +54,8 @@ public class Regulartask extends Task {
         }
     }
 
-
     @Override
     public void load() {
 
     }
 }
-
-
-
-
-
-
-
-

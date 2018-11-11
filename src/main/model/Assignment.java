@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Task implements Dailytask, Loadable {
+public abstract class Assignment implements Dailytask, Loadable {
     public final MessagePrinter messagePrinter = new MessagePrinter(this);
     protected int number;
     protected String content;
@@ -17,7 +17,7 @@ public abstract class Task implements Dailytask, Loadable {
     protected double timeneeded;
     protected List<TodoList> todos;
 
-    public Task(int number, String content, String course, String type, String date, double timeneeded)  {
+    public Assignment(int number, String content, String course, String type, String date, double timeneeded)  {
         this.number = number;
         this.content = content;
         this.course = course;
@@ -27,7 +27,7 @@ public abstract class Task implements Dailytask, Loadable {
         todos= new ArrayList<>();
     }
 
-    public Task(ArrayList<String> data){
+    public Assignment(ArrayList<String> data){
         load(data);
     }
 
@@ -125,13 +125,13 @@ public abstract class Task implements Dailytask, Loadable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return number == task.number &&
-                Double.compare(task.timeneeded, timeneeded) == 0 &&
-                Objects.equals(content, task.content) &&
-                Objects.equals(course, task.course) &&
-                Objects.equals(date, task.date) &&
-                Objects.equals(type, task.type);
+        Assignment assignment = (Assignment) o;
+        return number == assignment.number &&
+                Double.compare(assignment.timeneeded, timeneeded) == 0 &&
+                Objects.equals(content, assignment.content) &&
+                Objects.equals(course, assignment.course) &&
+                Objects.equals(date, assignment.date) &&
+                Objects.equals(type, assignment.type);
     }
 
     @Override

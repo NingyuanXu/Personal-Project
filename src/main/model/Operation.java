@@ -30,7 +30,7 @@ public class Operation implements Loadable, Savable {
             String currentClass = "";
             ArrayList<String> temp = new ArrayList<>();
             for (String s : lines) {
-                if (s.equals("Regulartask") || s.equals("Optionaltask") || s.equals("Urgenttask")) {
+                if (s.equals("RegularAssignment") || s.equals("OptionalAssignment") || s.equals("UrgentAssignment")) {
                     todoList.buildTask(currentClass, temp);
                     currentClass = s;
                     temp = new ArrayList<>();
@@ -71,7 +71,7 @@ public class Operation implements Loadable, Savable {
     }
 
 
-    //MODIFIES: Regulartask t,this
+    //MODIFIES: RegularAssignment t,this
     //EFFECTS: create a new regular task t
     // then add the regular task t into todoList
 
@@ -79,7 +79,7 @@ public class Operation implements Loadable, Savable {
         todoList.addregulartask();
     }
 
-    //MODIFIES: Urgenttask t,this
+    //MODIFIES: UrgentAssignment t,this
     //EFFECTS: create a new urgent task t
     // then add the urgent task t into todoList
 
@@ -87,7 +87,7 @@ public class Operation implements Loadable, Savable {
         todoList.addurgentrtask();
     }
 
-    //MODIFIES: Optionaltask t,this
+    //MODIFIES: OptionalAssignment t,this
     //EFFECTS: create a new optional task t
     // then add the optional task t into todoList
 
@@ -106,7 +106,7 @@ public class Operation implements Loadable, Savable {
 
     }
 
-    public List<Task> getTodoList() {
+    public List<Assignment> getTodoList() {
         return todoList.getTodoList();
     }
 

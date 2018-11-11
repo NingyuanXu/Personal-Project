@@ -9,10 +9,10 @@ import java.util.*;
 
 public class TodoList {
     private final Operation operation;
-    public List<Task> todoList = new ArrayList<Task>();
+    public List<Assignment> todoList = new ArrayList<Assignment>();
     public Scanner scanner;
     public int Number = 1;
-    public static Map<Integer,Task > taskMap  = new HashMap<>();
+    public static Map<Integer, Assignment> taskMap  = new HashMap<>();
 
 
     public TodoList(Operation operation) {
@@ -22,19 +22,19 @@ public class TodoList {
 
     public void buildTask(String currentClass, ArrayList<String> temp) {
         if (currentClass != "") {
-            if (currentClass.equals("Regulartask")) {
-                Regulartask r = new Regulartask(temp);
+            if (currentClass.equals("RegularAssignment")) {
+                RegularAssignment r = new RegularAssignment(temp);
                 todoList.add(r);
                 taskMap.put(r.getNumber(),r);
             }
-            if (currentClass.equals("Optionaltask")) {
-                Optionaltask o = new Optionaltask(temp);
+            if (currentClass.equals("OptionalAssignment")) {
+                OptionalAssignment o = new OptionalAssignment(temp);
                 todoList.add(o);
                 taskMap.put(o.getNumber(),o);
 
             }
-            if (currentClass.equals("Urgenttask")) {
-                Urgenttask u = new Urgenttask(temp);
+            if (currentClass.equals("UrgentAssignment")) {
+                UrgentAssignment u = new UrgentAssignment(temp);
                 todoList.add(u);
                 taskMap.put(u.getNumber(),u);
 
@@ -58,7 +58,7 @@ public class TodoList {
 
     public void addregulartask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
         scanner = new Scanner(System.in);
-        Task t = new Regulartask(Number, "", "", "", "", Number);
+        Assignment t = new RegularAssignment(Number, "", "", "", "", Number);
         System.out.println("Please enter the regular assignment in text.");
         String content = scanner.nextLine();
         t.setContent(content);
@@ -68,7 +68,7 @@ public class TodoList {
 
     public void addurgentrtask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
         scanner = new Scanner(System.in);
-        Urgenttask t2 = new Urgenttask(Number, "", "", "", "", Number, Number, Number);
+        UrgentAssignment t2 = new UrgentAssignment(Number, "", "", "", "", Number, Number, Number);
         System.out.println("Please enter the URGENT assignment in text.");
         String content = scanner.nextLine();
         t2.setContent(content);
@@ -79,7 +79,7 @@ public class TodoList {
 
     public void addoptionaltask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
         scanner = new Scanner(System.in);
-        Task t3 = new Optionaltask(Number, "", "", "", "", Number);
+        Assignment t3 = new OptionalAssignment(Number, "", "", "", "", Number);
         System.out.println("Please enter the optional assignment in text.");
         String content = scanner.nextLine();
         t3.setContent(content);
@@ -87,7 +87,7 @@ public class TodoList {
         addTaskHelperTwo(t3);
     }
 
-    private void addTaskHelperOne(Task t) throws NegativeNumberException {
+    private void addTaskHelperOne(Assignment t) throws NegativeNumberException {
         System.out.println("Please enter the course of the assignment.");
         String course = scanner.nextLine();
         t.setCourse(course);
@@ -105,7 +105,7 @@ public class TodoList {
         assert (timeneeded > 0);
     }
 
-    private void addTaskHelperTwo(Task t) throws TooManyThingsToDoException {
+    private void addTaskHelperTwo(Assignment t) throws TooManyThingsToDoException {
         if (todoList.size() >= 10)
             throw new TooManyThingsToDoException();
         if (!todoList.contains(t)) {
@@ -119,7 +119,7 @@ public class TodoList {
 
 
 
-    private void addUrgentTaskHelper(Urgenttask t2) throws NegativeNumberException {
+    private void addUrgentTaskHelper(UrgentAssignment t2) throws NegativeNumberException {
         System.out.println("Please enter the level of urgency for the assignment, from 0-10");
         int levelofurgency = Integer.parseInt(scanner.nextLine());
         if (levelofurgency < 0)
@@ -139,7 +139,7 @@ public class TodoList {
 
 
 
-    public List<Task> getTodoList() {
+    public List<Assignment> getTodoList() {
         return todoList;
     }
 

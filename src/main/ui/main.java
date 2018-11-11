@@ -4,19 +4,46 @@ import exceptions.ItemNotThereException;
 import exceptions.NegativeNumberException;
 import exceptions.TooManyThingsToDoException;
 import main.model.Operation;
-import main.model.Task;
+import main.model.Assignment;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Scanner;
 
 
 public class main {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws MalformedURLException, IOException {
 
+        BufferedReader br = null;
 
+        try {
+            String theURL = "https://www.ugrad.cs.ubc.ca/~cs210/2018w1/welcomemsg.html"; //this can point to any URL
+            URL url = new URL(theURL);
+            br = new BufferedReader(new InputStreamReader(url.openStream()));
+
+            String line;
+
+            StringBuilder sb = new StringBuilder();
+
+            while ((line = br.readLine()) != null) {
+
+                sb.append(line);
+                sb.append(System.lineSeparator());
+            }
+
+            System.out.println(sb);
+        } finally {
+
+            if (br != null) {
+                br.close();
+            }
+        }
 
         Scanner scanner = new Scanner(System.in);
         String operation;
@@ -24,7 +51,7 @@ public class main {
         Operation todo = new Operation(true);
 
 
-        System.out.println("\nWelcome to my project! This is an Operation App.");
+        System.out.println("This is an Assignment Todo App.");
 
         System.out.println("\nWhat would you like to do\n " +
                 "\n[1] add a REGULAR assignment to the Todo list." +
@@ -86,17 +113,18 @@ public class main {
             } else if (operation.equals("4")) {
 
 
-                for(Task task: todo.todoList.getTodoList()){
-                    System.out.println(task.toString());
+                for(Assignment assignment : todo.todoList.getTodoList()){
+                    System.out.println(assignment.toString());
 
                 }
+
                 System.out.println("Please enter your option.");
 
 
             } else if (operation.equals("5")) {
 
-                for (Task task : todo.todoList.getTodoList()) {
-                    System.out.println(task.toString());
+                for (Assignment assignment : todo.todoList.getTodoList()) {
+                    System.out.println(assignment.toString());
 
                 }
                 System.out.println("Please select the number for the item that you would like to delete.");
@@ -114,8 +142,8 @@ public class main {
 
             } else if (operation.equals("6")) {
 
-                for (Task task : todo.crossoffList.crossoffList) {
-                    System.out.println(task.toString());
+                for (Assignment assignment : todo.crossoffList.crossoffList) {
+                    System.out.println(assignment.toString());
 
                 }
                 System.out.println("Please enter the number of the item that you would like to retrieve.");
@@ -133,8 +161,8 @@ public class main {
             } else if (operation.equals("quit")) {
                 PrintWriter writer = new PrintWriter("outputfile.txt", "UTF-8");
                 writer.println(todo.todoList.Number);
-                for(Task task: todo.todoList.getTodoList()){
-                    writer.println(task.toString());
+                for(Assignment assignment : todo.todoList.getTodoList()){
+                    writer.println(assignment.toString());
                 }
                 writer.close();
                 break;

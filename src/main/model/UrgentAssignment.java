@@ -3,30 +3,30 @@ package main.model;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Urgenttask extends Task {
+public class UrgentAssignment extends Assignment {
 
     private int levelofurgency;
     private int percentageofweight;
 
 
-    public Urgenttask(int number, String content, String course, String type, String date, int number1, int i, double timeneeded) throws IOException {
+    public UrgentAssignment(int number, String content, String course, String type, String date, int number1, int i, double timeneeded) throws IOException {
         super(number, content, course, type, date, timeneeded);
     }
 
-    public Urgenttask(int number, String content, String course, String type, String date, double timeneeded, int levelofurgency) throws IOException {
+    public UrgentAssignment(int number, String content, String course, String type, String date, double timeneeded, int levelofurgency) throws IOException {
         super(number, content, course, type, date, timeneeded);
         this.levelofurgency = levelofurgency;
         this.percentageofweight = percentageofweight;
     }
 
-    public Urgenttask(ArrayList<String> data){
+    public UrgentAssignment(ArrayList<String> data){
         super(data);
     }
 
 
     @Override
     public String toString() {
-        return "Urgenttask" +"\n"+
+        return "UrgentAssignment" +"\n"+
                 messagePrinter.printcontent() +
             "levelofurgency: " + levelofurgency +"\n"+
             "percentageofweight: " + percentageofweight +"\n";
@@ -34,14 +34,14 @@ public class Urgenttask extends Task {
 
     @Override
     public String complete() {
-        String urgentstring = "The urgent task has been completed.";
+        String urgentstring = "The urgent task "+messagePrinter.complete();
         System.out.println(urgentstring);
         return urgentstring;
     }
 
     @Override
     public String setreminder() {
-        String s3 = "You still have urgent tasks to do. Please do it AS SOON AS POSSIBLE!!!";
+        String s3 = messagePrinter.setreminder()+" urgent tasks to do. Please do it AS SOON AS POSSIBLE!!!";
         System.out.println(s3);
         return s3;
     }

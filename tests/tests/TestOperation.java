@@ -5,7 +5,7 @@ import exceptions.ItemNotThereException;
 import exceptions.NegativeNumberException;
 import exceptions.TooManyThingsToDoException;
 import main.model.Operation;
-import main.model.Regulartask;
+import main.model.RegularAssignment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 
 public class TestOperation {
-    Regulartask regulartask;
-    Regulartask othertask;
+    RegularAssignment regularAssignment;
+    RegularAssignment othertask;
     Operation todo;
-    ArrayList<Regulartask> todoList;
-    ArrayList<Regulartask> crossoffList;
+    ArrayList<RegularAssignment> todoList;
+    ArrayList<RegularAssignment> crossoffList;
     private boolean status = true;
 
 
@@ -33,8 +33,8 @@ public class TestOperation {
 
         todoList = new ArrayList<>();
         crossoffList = new ArrayList<>();
-        regulartask = new Regulartask(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
-        othertask = new Regulartask(2, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
+        regularAssignment = new RegularAssignment(1, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
+        othertask = new RegularAssignment(2, "Webwork3", "Math200", "Webwork", "2018.8.29 11:59pm", 5);
     }
 
     @Test

@@ -3,8 +3,7 @@ package main.ui;
 import exceptions.ItemNotThereException;
 import exceptions.NegativeNumberException;
 import exceptions.TooManyThingsToDoException;
-import main.model.Operation;
-import main.model.Assignment;
+import main.model.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,10 +44,14 @@ public class main {
             }
         }
 
+
+
+
         Scanner scanner = new Scanner(System.in);
         String operation;
 
         Operation todo = new Operation(true);
+
 
 
         System.out.println("This is an Assignment Todo App.");
@@ -65,6 +68,8 @@ public class main {
 
         while (true) {
 
+
+
             operation = scanner.nextLine();
 
 
@@ -77,7 +82,7 @@ public class main {
                 }catch (TooManyThingsToDoException e) {
                     System.out.println("You have too many things to do.");
                 }finally {
-                    System.out.println("Please enter your option.");
+                    System.out.println("\nPlease enter your option.");
                 }
 
 
@@ -92,7 +97,7 @@ public class main {
                 } catch (TooManyThingsToDoException e) {
                     System.out.println("You have too many things to do.");
                 }finally {
-                    System.out.println("Please enter your option.");
+                    System.out.println("\nPlease enter your option.");
                 }
 
 
@@ -106,7 +111,7 @@ public class main {
                 } catch (TooManyThingsToDoException e) {
                     System.out.println("You have too many things to do.");
                 }finally {
-                    System.out.println("Please enter your option.");
+                    System.out.println("\nPlease enter your option.");
                 }
 
 

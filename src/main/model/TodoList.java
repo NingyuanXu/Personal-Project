@@ -7,7 +7,7 @@ import exceptions.TooManyThingsToDoException;
 import java.io.IOException;
 import java.util.*;
 
-public class TodoList {
+public class TodoList extends Assignment {
     private final Operation operation;
     public List<Assignment> todoList = new ArrayList<Assignment>();
     public Scanner scanner;
@@ -16,8 +16,10 @@ public class TodoList {
 
 
     public TodoList(Operation operation) {
+        super();
 
         this.operation = operation;
+
     }
 
     public void buildTask(String currentClass, ArrayList<String> temp) {
@@ -112,7 +114,7 @@ public class TodoList {
             todoList.add(t);
             t.addTodoList(this);
             taskMap.put(Number, t);
-            System.out.println("The assignment " + Number + " is added successfully!");
+            print();
             Number++;
         }
     }
@@ -144,4 +146,30 @@ public class TodoList {
     }
 
 
+    @Override
+    public String setreminder() {
+        return null;
+    }
+
+    @Override
+    public String complete() {
+        return null;
+    }
+
+    @Override
+    public void print() {
+
+        System.out.println("The assignment " + Number + " is added successfully!\n");
+
+    }
+
+    @Override
+    protected void load(ArrayList<String> data) {
+
+    }
+
+    @Override
+    public void load() {
+
+    }
 }

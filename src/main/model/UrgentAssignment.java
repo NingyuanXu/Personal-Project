@@ -40,6 +40,11 @@ public class UrgentAssignment extends Assignment {
     }
 
     @Override
+    public void print() {
+        System.out.println("The assignment is added successfully!");
+    }
+
+    @Override
     public String setreminder() {
         String s3 = messagePrinter.setreminder()+" urgent tasks to do. Please do it AS SOON AS POSSIBLE!!!";
         System.out.println(s3);

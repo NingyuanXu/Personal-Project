@@ -31,6 +31,9 @@ public abstract class Assignment implements Dailytask, Loadable {
         load(data);
     }
 
+    public Assignment() {
+
+    }
 
 
     public abstract String complete();
@@ -44,6 +47,8 @@ public abstract class Assignment implements Dailytask, Loadable {
             todos.add(t);
         }
     }
+
+    public abstract void print();
 
     // EFFECTS: get the number for the task
     public int getNumber() {

@@ -29,6 +29,11 @@ public class OptionalAssignment extends Assignment {
     }
 
     @Override
+    public void print() {
+        System.out.println("The assignment is added successfully!");
+    }
+
+    @Override
     public String setreminder() {
         String s3 = " optional tasks to do"+messagePrinter.setreminder();
         System.out.println(s3);

@@ -15,7 +15,7 @@ import java.util.List;
 import static java.nio.file.Files.readAllLines;
 
 
-public class Operation implements Loadable, Savable {
+public class Operation extends Observable implements Loadable, Savable    {
     public final CrossoffList crossoffList = new CrossoffList(this);
     public final TodoList todoList = new TodoList(this);
 
@@ -56,7 +56,6 @@ public class Operation implements Loadable, Savable {
     //print "ITEM NOT FOUND!" if there is no item with the number matching to the parameter
 
     public void removetask(int Number) throws ItemNotThereException {
-
         todoList.removetask(Number);
     }
 
@@ -65,6 +64,7 @@ public class Operation implements Loadable, Savable {
     //MODIFIES: this
     //EFFECTS: delete the task with the same number as the parameter from the crossoffList and add it to the todolist; print out the statement when the operation is done; then break;
     public void retrievetask(int Number) throws ItemNotThereException {
+
 
 
         crossoffList.retrievetask(Number);
@@ -77,6 +77,7 @@ public class Operation implements Loadable, Savable {
 
     public void addregulartask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
         todoList.addregulartask();
+        notifyObserver();
     }
 
     //MODIFIES: UrgentAssignment t,this
@@ -85,6 +86,8 @@ public class Operation implements Loadable, Savable {
 
     public void addurgentrtask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
         todoList.addurgentrtask();
+        notifyObserver();
+
     }
 
     //MODIFIES: OptionalAssignment t,this
@@ -93,6 +96,8 @@ public class Operation implements Loadable, Savable {
 
     public void addoptionaltask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
         todoList.addoptionaltask();
+        notifyObserver();
+
     }
 
 

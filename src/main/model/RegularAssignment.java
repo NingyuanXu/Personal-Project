@@ -39,6 +39,11 @@ public class RegularAssignment extends Assignment {
     }
 
     @Override
+    public void print() {
+        System.out.println("The assignment is added successfully!");
+    }
+
+    @Override
     protected void load(ArrayList<String> data) {
         for(String s: data){
             if(s.startsWith("number")){

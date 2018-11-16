@@ -15,6 +15,6 @@ public class Student implements Observer{
 
     @Override
     public void update() {
-        System.out.println("A new assignment has been released! "  );
+        System.out.println(name+" : A new assignment has been released! "  );
     }
 }

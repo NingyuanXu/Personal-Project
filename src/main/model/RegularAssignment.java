@@ -40,7 +40,8 @@ public class RegularAssignment extends Assignment {
 
     @Override
     public void print() {
-        System.out.println("The assignment is added successfully!");
+
+        messagePrinter.print();
     }
 
     @Override

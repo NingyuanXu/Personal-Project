@@ -158,9 +158,10 @@ public class TodoList extends Assignment {
 
     @Override
     public void print() {
-
-        System.out.println("The assignment " + Number + " is added successfully!\n");
-
+        for (Assignment a : todoList) {
+            //System.out.println(a.getContent()  + " is added successfully!\n");
+            System.out.println("The assignment " + Number + " is added successfully!\n");
+        }
     }
 
     @Override

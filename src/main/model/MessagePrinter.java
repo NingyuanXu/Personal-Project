@@ -19,6 +19,9 @@ public class MessagePrinter implements Dailytask {
                         "timeneeded: " + assignment.getTimeneeded() + "\n";
     }
 
+    public void print() {
+        System.out.println("The assignment is added successfully!");
+    }
 
     @Override
     public String setreminder() {

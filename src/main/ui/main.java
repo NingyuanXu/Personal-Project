@@ -3,7 +3,8 @@ package main.ui;
 import exceptions.ItemNotThereException;
 import exceptions.NegativeNumberException;
 import exceptions.TooManyThingsToDoException;
-import main.model.*;
+import main.model.Assignment;
+import main.model.Operation;
 
 import java.io.BufferedReader;
 import java.io.IOException;

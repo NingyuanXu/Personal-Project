@@ -5,9 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI {
+public class AssignemntTodoApp {
 
-    private static JFrame frame = new JFrame("GUI");
+    private static JFrame frame = new JFrame("AssignemntTodoApp");
     private JPanel panel1;
     private JButton a1Button;
     private JButton a2Button;
@@ -16,7 +16,7 @@ public class GUI {
     private JButton a5Button;
     private JButton a4Button;
 
-    public GUI() {
+    public AssignemntTodoApp() {
 
         frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,44 +26,43 @@ public class GUI {
         a1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI1();
+                new AddRegularAssignment();
             }
         });
         a2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI2();
+                new AddUrgentAssignment();
             }
         });
         a3Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI3();
+                new AddOptionalAssignment();
             }
         });
         a4Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI4();
+                new Display();
 
             }
         });
         a5Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI5();
+                new Delete();
 
             }
         });
         a6Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI6();
+                new Retrieve();
 
             }
         });
     }
-
 
 
     {

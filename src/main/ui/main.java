@@ -16,13 +16,13 @@ import java.util.Scanner;
 
 
 public class main {
-    private GUI gui;
-    private GUI1 gui1;
-    private GUI2 gui2;
-    private GUI3 gui3;
-    private GUI4 gui4;
-    private GUI5 gui5;
-    private GUI6 gui6;
+    private AssignemntTodoApp assignemntTodoApp;
+    private AddRegularAssignment addRegularAssignment;
+    private AddUrgentAssignment addUrgentAssignment;
+    private AddOptionalAssignment addOptionalAssignment;
+    private Display display;
+    private Delete delete;
+    private Retrieve retrieve;
 
     public static void main(String[] args) throws MalformedURLException, IOException {
 
@@ -59,7 +59,7 @@ public class main {
 
         Operation todo = new Operation(true);
 
-        new GUI();
+        new AssignemntTodoApp();
 
         System.out.println("This is an Assignment Todo App.");
 
@@ -139,7 +139,7 @@ public class main {
                     System.out.println(assignment.toString());
 
                 }
-                System.out.println("Please select the number for the item that you would like to delete.");
+                System.out.println("Please select the number for the item that you would like to display.");
                 operation = scanner.nextLine();
                 try {
                     todo.removetask(Integer.parseInt(operation));

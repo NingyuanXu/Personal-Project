@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI1 extends JPanel {
+public class AddRegularAssignment extends JPanel {
     private JPanel panel1;
     private JTextField textField1;
     private JTextField textField2;
@@ -15,9 +15,9 @@ public class GUI1 extends JPanel {
     private JButton confirmButton;
     private JButton returnButton;
 
-    public GUI1() {
+    public AddRegularAssignment() {
 
-        JFrame frame = new JFrame("GUI1");
+        JFrame frame = new JFrame("AddRegularAssignment");
         frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
@@ -63,7 +63,7 @@ public class GUI1 extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new GUI();
+                new AssignemntTodoApp();
             }
         });
     }
@@ -128,9 +128,9 @@ public class GUI1 extends JPanel {
         return panel1;
     }
 
-//    public static void main(String[] args) {
-//        JFrame frame = new JFrame("GUI1");
-//        frame.setContentPane(new GUI1().panel1);
+    //    public static void main(String[] args) {
+//        JFrame frame = new JFrame("AddRegularAssignment");
+//        frame.setContentPane(new AddRegularAssignment().panel1);
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.pack();
 //        frame.setVisible(true);

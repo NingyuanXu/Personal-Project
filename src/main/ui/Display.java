@@ -5,12 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI4 extends JFrame {
+public class Display extends JFrame {
     private JPanel panel1;
     private JButton returnButton;
 
-    public GUI4() {
-        JFrame frame = new JFrame("GUI4");
+    public Display() {
+        JFrame frame = new JFrame("Display");
         frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
@@ -20,7 +20,7 @@ public class GUI4 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
 
-                new GUI();
+                new AssignemntTodoApp();
             }
         });
     }

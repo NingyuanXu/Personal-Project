@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI2 extends JFrame {
+public class AddUrgentAssignment extends JFrame {
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
@@ -17,9 +17,9 @@ public class GUI2 extends JFrame {
     private JButton returnButton;
     private JPanel urgent;
 
-    public GUI2() {
+    public AddUrgentAssignment() {
 
-        JFrame frame = new JFrame("GUI2");
+        JFrame frame = new JFrame("AddUrgentAssignment");
         frame.setContentPane(urgent);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
@@ -77,12 +77,11 @@ public class GUI2 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new GUI();
+                new AssignemntTodoApp();
 
             }
         });
     }
-
 
 
     {

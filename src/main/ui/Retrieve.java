@@ -5,14 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI6 extends JFrame {
+public class Retrieve extends JFrame {
     private JTextField textField1;
     private JButton confirmButton;
     private JPanel retrieve;
     private JButton returnButton;
 
-    public GUI6() {
-        JFrame frame = new JFrame("GUI6");
+    public Retrieve() {
+        JFrame frame = new JFrame("Retrieve");
         frame.setContentPane(retrieve);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
@@ -33,7 +33,7 @@ public class GUI6 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new GUI();
+                new AssignemntTodoApp();
             }
         });
     }

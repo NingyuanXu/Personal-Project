@@ -12,13 +12,15 @@ public class GUI4 extends JFrame {
     public GUI4() {
         JFrame frame = new JFrame("GUI4");
         frame.setContentPane(panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-new GUI();
+                frame.setVisible(false);
+
+                new GUI();
             }
         });
     }

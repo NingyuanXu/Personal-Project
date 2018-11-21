@@ -18,7 +18,7 @@ public class GUI3 extends JFrame {
     public GUI3() {
         JFrame frame = new JFrame("GUI3");
         frame.setContentPane(optional);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         textField1.addActionListener(new ActionListener() {
@@ -60,7 +60,9 @@ public class GUI3 extends JFrame {
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-new GUI();
+                frame.setVisible(false);
+
+                new GUI();
             }
         });
     }

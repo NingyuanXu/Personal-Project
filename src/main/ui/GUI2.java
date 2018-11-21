@@ -21,7 +21,7 @@ public class GUI2 extends JFrame {
 
         JFrame frame = new JFrame("GUI2");
         frame.setContentPane(urgent);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
@@ -76,6 +76,7 @@ public class GUI2 extends JFrame {
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
                 new GUI();
 
             }

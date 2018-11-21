@@ -19,7 +19,7 @@ public class GUI1 extends JPanel {
 
         JFrame frame = new JFrame("GUI1");
         frame.setContentPane(panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
@@ -62,7 +62,8 @@ public class GUI1 extends JPanel {
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-        new GUI();
+                frame.setVisible(false);
+                new GUI();
             }
         });
     }

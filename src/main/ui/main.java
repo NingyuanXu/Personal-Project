@@ -59,7 +59,7 @@ public class main {
 
         Operation todo = new Operation(true);
 
-
+        new GUI();
 
         System.out.println("This is an Assignment Todo App.");
 

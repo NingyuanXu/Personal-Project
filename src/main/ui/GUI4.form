@@ -20,6 +20,12 @@
           <text value="Return "/>
         </properties>
       </component>
+      <component id="915ec" class="javax.swing.JLabel">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

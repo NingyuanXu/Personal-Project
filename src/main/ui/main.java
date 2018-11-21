@@ -16,7 +16,13 @@ import java.util.Scanner;
 
 
 public class main {
-
+    private GUI gui;
+    private GUI1 gui1;
+    private GUI2 gui2;
+    private GUI3 gui3;
+    private GUI4 gui4;
+    private GUI5 gui5;
+    private GUI6 gui6;
 
     public static void main(String[] args) throws MalformedURLException, IOException {
 

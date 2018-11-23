@@ -60,10 +60,10 @@ public class TodoList {
             todoList.remove(taskMap1.get(num));
             taskMap2.put(num,taskMap1.get(num));
             taskMap1.remove(num);
-            JOptionPane.showConfirmDialog(null,"The item you selected has been deleted from the Todo List.");
+            JOptionPane.showMessageDialog(null,"The item you selected has been deleted from the Todo List.");
             System.out.println("The assignment is deleted successfully!");
         }
-        else {JOptionPane.showConfirmDialog(null,"Item Not Found!!!");}
+        else {JOptionPane.showMessageDialog(null,"Item Not Found!!!");}
 
     }
 
@@ -75,10 +75,10 @@ public class TodoList {
             crossOffList.remove(taskMap2.get(num));
             taskMap1.put(num,taskMap2.get(num));
             taskMap2.remove(num);
-            JOptionPane.showConfirmDialog(null,"The item you selected has been retrieved and placed back to the Todo List.");
+            JOptionPane.showMessageDialog(null,"The item you selected has been retrieved and placed back to the Todo List.");
             System.out.println("The deleted item is retrieved successfully!");
         }
-        else {JOptionPane.showConfirmDialog(null,"Item Not Found!!!");}
+        else {JOptionPane.showMessageDialog(null,"Item Not Found!!!");}
 
 
     }

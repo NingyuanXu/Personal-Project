@@ -1,5 +1,7 @@
 package main.ui;
 
+import main.model.TodoList;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +13,7 @@ public class Delete extends JFrame {
     private JPanel delete;
     private JButton returnButton;
 
-    public Delete() {
+    public Delete(TodoList todoList) {
         JFrame frame = new JFrame("Delete");
         frame.setContentPane(delete);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -33,7 +35,7 @@ public class Delete extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new AssignemntTodoApp();
+
             }
         });
     }

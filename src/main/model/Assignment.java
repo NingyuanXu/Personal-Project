@@ -1,13 +1,8 @@
 package main.model;
 
-import implementations.Dailytask;
-import implementations.Loadable;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-public abstract class Assignment implements Dailytask, Loadable {
+public abstract class Assignment {
     public final MessagePrinter messagePrinter = new MessagePrinter(this);
     protected int number;
     protected String content;
@@ -15,7 +10,7 @@ public abstract class Assignment implements Dailytask, Loadable {
     protected String date;
     protected String type;
     protected double timeneeded;
-    protected List<TodoList> todos;
+
 
     public Assignment(int number, String content, String course, String type, String date, double timeneeded)  {
         this.number = number;
@@ -24,31 +19,9 @@ public abstract class Assignment implements Dailytask, Loadable {
         this.date = date;
         this.type = type;
         this.timeneeded = timeneeded;
-        todos= new ArrayList<>();
-    }
-
-    public Assignment(ArrayList<String> data){
-        load(data);
-    }
-
-    public Assignment() {
-
     }
 
 
-    public abstract String complete();
-
-    public String printcontent (){
-        return messagePrinter.printcontent();
-    }
-
-    public void addTodoList(TodoList t) {
-        if (!todos.contains(t)) {
-            todos.add(t);
-        }
-    }
-
-    public abstract void print();
 
     // EFFECTS: get the number for the task
     public int getNumber() {
@@ -145,7 +118,7 @@ public abstract class Assignment implements Dailytask, Loadable {
         return Objects.hash(number, content, course, date, type, timeneeded);
     }
 
-    protected abstract void load(ArrayList<String> data);
+
 
 }
 

@@ -1,9 +1,16 @@
 package main.ui;
 
+import main.model.Assignment;
+import main.model.OptionalAssignment;
+import main.model.RegularAssignment;
+import main.model.TodoList;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static main.ui.AssignemntTodoApp.todoList;
 
 public class AddOptionalAssignment extends JFrame {
     private JTextField textField1;
@@ -15,45 +22,25 @@ public class AddOptionalAssignment extends JFrame {
     private JButton returnButton;
     private JPanel optional;
 
-    public AddOptionalAssignment() {
+    public AddOptionalAssignment(TodoList todoList) {
         JFrame frame = new JFrame("AddOptionalAssignment");
         frame.setContentPane(optional);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        textField1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        Assignment t2 = new OptionalAssignment(todoList.Number, "", "", "", "", 0);
 
-            }
-        });
-        textField2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        textField3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        textField4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        textField5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                t2.setContent(textField1.getText());
+                t2.setCourse(textField2.getText());
+                t2.setType(textField3.getText());
+                t2.setDate(textField4.getText());
+                t2.setTimeneeded(Double.parseDouble(textField5.getText()));
+                todoList.addoptionaltask(t2);
+                JOptionPane.showConfirmDialog(null, "The assignment is added successfully!");
 
             }
         });
@@ -62,10 +49,11 @@ public class AddOptionalAssignment extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
 
-                new AssignemntTodoApp();
             }
         });
     }
+
+
 
 
     {

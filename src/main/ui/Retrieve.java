@@ -1,5 +1,7 @@
 package main.ui;
 
+import main.model.TodoList;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +13,7 @@ public class Retrieve extends JFrame {
     private JPanel retrieve;
     private JButton returnButton;
 
-    public Retrieve() {
+    public Retrieve(TodoList todoList) {
         JFrame frame = new JFrame("Retrieve");
         frame.setContentPane(retrieve);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -33,7 +35,6 @@ public class Retrieve extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new AssignemntTodoApp();
             }
         });
     }

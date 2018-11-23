@@ -1,176 +1,85 @@
 package main.model;
 
-import exceptions.ItemNotThereException;
-import exceptions.NegativeNumberException;
-import exceptions.TooManyThingsToDoException;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.io.IOException;
-import java.util.*;
-
-public class TodoList extends Assignment {
-    private final Operation operation;
-    public List<Assignment> todoList = new ArrayList<Assignment>();
-    public Scanner scanner;
-    public int Number = 1;
-    public static Map<Integer, Assignment> taskMap  = new HashMap<>();
+public class TodoList {
+    private List<Assignment> todoList;
+    private List<Assignment> crossOffList;
+    public static int Number;
 
 
-    public TodoList(Operation operation) {
-        super();
+    public TodoList() {
 
-        this.operation = operation;
+        todoList = new ArrayList<>();
+        crossOffList = new ArrayList<>();
+        Number = 1;
 
     }
-
-    public void buildTask(String currentClass, ArrayList<String> temp) {
-        if (currentClass != "") {
-            if (currentClass.equals("RegularAssignment")) {
-                RegularAssignment r = new RegularAssignment(temp);
-                todoList.add(r);
-                taskMap.put(r.getNumber(),r);
-            }
-            if (currentClass.equals("OptionalAssignment")) {
-                OptionalAssignment o = new OptionalAssignment(temp);
-                todoList.add(o);
-                taskMap.put(o.getNumber(),o);
-
-            }
-            if (currentClass.equals("UrgentAssignment")) {
-                UrgentAssignment u = new UrgentAssignment(temp);
-                todoList.add(u);
-                taskMap.put(u.getNumber(),u);
-
-            }
-        }
-    }
-
-    public void removetask(int num) throws ItemNotThereException {
-
-        if (taskMap.containsKey(num)) {
-            todoList.remove(taskMap.get(num));
-            operation.getCrossoffList().crossoffList.add(taskMap.get(num));
-            taskMap.remove(num);
-            System.out.println("The item you selected has been deleted from the Todo List.\n");
-            System.out.println("You have " + todoList.size() + " items left in your TodoList");
-        }
-       else {throw new ItemNotThereException();}
-
-    }
-
-
-    public void addregulartask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
-        scanner = new Scanner(System.in);
-        Assignment t = new RegularAssignment(Number, "", "", "", "", Number);
-        System.out.println("Please enter the regular assignment in text.");
-        String content = scanner.nextLine();
-        t.setContent(content);
-        addTaskHelperOne(t);
-        addTaskHelperTwo(t);
-    }
-
-    public void addurgentrtask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
-        scanner = new Scanner(System.in);
-        UrgentAssignment t2 = new UrgentAssignment(Number, "", "", "", "", Number, Number, Number);
-        System.out.println("Please enter the URGENT assignment in text.");
-        String content = scanner.nextLine();
-        t2.setContent(content);
-        addTaskHelperOne(t2);
-        addUrgentTaskHelper(t2);
-        addTaskHelperTwo(t2);
-    }
-
-    public void addoptionaltask() throws TooManyThingsToDoException, NegativeNumberException, IOException {
-        scanner = new Scanner(System.in);
-        Assignment t3 = new OptionalAssignment(Number, "", "", "", "", Number);
-        System.out.println("Please enter the optional assignment in text.");
-        String content = scanner.nextLine();
-        t3.setContent(content);
-        addTaskHelperOne(t3);
-        addTaskHelperTwo(t3);
-    }
-
-    private void addTaskHelperOne(Assignment t) throws NegativeNumberException {
-        System.out.println("Please enter the course of the assignment.");
-        String course = scanner.nextLine();
-        t.setCourse(course);
-        System.out.println("Please enter the type of the assignment: Webwork, Lab, Essay, Other");
-        String type = scanner.nextLine();
-        t.setType(type);
-        System.out.println("Please enter the due date for this assignment,e.g 2018/10/01,11:59pm");
-        String date = scanner.nextLine();
-        t.setDate(date);
-        System.out.println("Please enter the time needed for the assignment.");
-        double timeneeded = Double.parseDouble(scanner.nextLine());
-        if (timeneeded < 0)
-            throw new NegativeNumberException();
-        t.setTimeneeded(timeneeded);
-        assert (timeneeded > 0);
-    }
-
-    private void addTaskHelperTwo(Assignment t) throws TooManyThingsToDoException {
-        if (todoList.size() >= 10)
-            throw new TooManyThingsToDoException();
-        if (!todoList.contains(t)) {
-            todoList.add(t);
-            t.addTodoList(this);
-            taskMap.put(Number, t);
-            print();
-            Number++;
-        }
-    }
-
-
-
-    private void addUrgentTaskHelper(UrgentAssignment t2) throws NegativeNumberException {
-        System.out.println("Please enter the level of urgency for the assignment, from 0-10");
-        int levelofurgency = Integer.parseInt(scanner.nextLine());
-        if (levelofurgency < 0)
-            throw new NegativeNumberException();
-        t2.setLevelofurgency(levelofurgency);
-        assert (levelofurgency > 0);
-        System.out.println("Please enter the percentage of weight for the assignment in the final, eg. 30");
-        int percentageofweight = Integer.parseInt(scanner.nextLine());
-        if (percentageofweight < 0)
-            throw new NegativeNumberException();
-        t2.setPercentageofweight(percentageofweight);
-        assert (percentageofweight > 0);
-    }
-
-
-
-
-
 
     public List<Assignment> getTodoList() {
         return todoList;
     }
 
-
-    @Override
-    public String setreminder() {
-        return null;
+    public void addregulartask(Assignment a) {
+        todoList.add(a);
+        print();
+        Number++;
     }
 
-    @Override
-    public String complete() {
-        return null;
+    public void addurgentrtask(UrgentAssignment u) {
+        todoList.add(u);
+        print();
+        Number++;
     }
 
-    @Override
-    public void print() {
+    public void addoptionaltask(Assignment a)  {
+        todoList.add(a);
+        print();
+        Number++;
+
+    }
+
+    public void removetask(int num) {
+        boolean itemThere = false;
+
         for (Assignment a : todoList) {
-            //System.out.println(a.getContent()  + " is added successfully!\n");
-            System.out.println("The assignment " + Number + " is added successfully!\n");
+            if (a.getNumber() == num) {
+                itemThere = true;
+                todoList.remove(a);
+                crossOffList.add(a);
+                System.out.println("The item you selected has been deleted from the Todo List.\n");
+                System.out.println("You have " + todoList.size() + " items left in your TodoList");
+            }
+        }
+        if (!itemThere) {
+            System.out.println("Item Not Found!!!");
+        }
+
+    }
+
+
+    public void retrievetask(int num) {
+        boolean itemThere = false;
+        for (Assignment t : crossOffList) {
+            if (t.getNumber() == num) {
+                itemThere = true;
+                crossOffList.remove(t);
+                todoList.add(t);
+                System.out.println("The item you selected has been retrieved and placed back to the Todo List.");
+            }
+        }
+        if (!itemThere) {
+            System.out.println("Item Not Found!!!");
         }
     }
 
-    @Override
-    protected void load(ArrayList<String> data) {
+
+    public void print() {
+        System.out.println("The assignment " + Number + " is added successfully!\n");
 
     }
 
-    @Override
-    public void load() {
 
     }
-}
+

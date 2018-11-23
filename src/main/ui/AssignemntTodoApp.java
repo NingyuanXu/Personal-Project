@@ -1,5 +1,7 @@
 package main.ui;
 
+import main.model.TodoList;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +17,8 @@ public class AssignemntTodoApp {
     private JButton a3Button;
     private JButton a5Button;
     private JButton a4Button;
+    public static TodoList todoList = new TodoList();
+
 
     public AssignemntTodoApp() {
 
@@ -26,43 +30,49 @@ public class AssignemntTodoApp {
         a1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddRegularAssignment();
-            }
-        });
+
+                    new AddRegularAssignment(todoList);
+
+                }
+            });
+
         a2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddUrgentAssignment();
+                new AddUrgentAssignment(todoList);
             }
         });
         a3Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddOptionalAssignment();
+                new AddOptionalAssignment(todoList);
             }
         });
         a4Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Display();
+                new Display(todoList);
 
             }
         });
         a5Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Delete();
+                new Delete(todoList);
 
             }
         });
         a6Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Retrieve();
+                new Retrieve(todoList);
 
             }
         });
+
     }
+
+
 
 
     {

@@ -20,11 +20,19 @@
           <text value="Return "/>
         </properties>
       </component>
+      <component id="9e798" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+        <constraints border-constraint="East"/>
+        <properties/>
+      </component>
       <component id="915ec" class="javax.swing.JLabel">
-        <constraints border-constraint="Center"/>
+        <constraints border-constraint="West"/>
         <properties>
           <text value=""/>
         </properties>
+      </component>
+      <component id="811bf" class="javax.swing.JList" binding="list1" default-binding="true">
+        <constraints border-constraint="Center"/>
+        <properties/>
       </component>
     </children>
   </grid>

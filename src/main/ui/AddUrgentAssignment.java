@@ -1,5 +1,8 @@
 package main.ui;
 
+import main.model.TodoList;
+import main.model.UrgentAssignment;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,59 +20,28 @@ public class AddUrgentAssignment extends JFrame {
     private JButton returnButton;
     private JPanel urgent;
 
-    public AddUrgentAssignment() {
+    public AddUrgentAssignment(TodoList todoList) {
 
         JFrame frame = new JFrame("AddUrgentAssignment");
         frame.setContentPane(urgent);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        UrgentAssignment u = new UrgentAssignment(todoList.Number, "", "", "", "", 0, 0, 0);
 
-        textField1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        textField2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        textField3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        textField4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        textField5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        textField6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        textField7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                u.setContent(textField1.getText());
+                u.setCourse(textField2.getText());
+                u.setType(textField3.getText());
+                u.setDate(textField4.getText());
+                u.setTimeneeded(Double.parseDouble(textField5.getText()));
+                u.setLevelofurgency(Integer.parseInt(textField6.getText()));
+                u.setPercentageofweight(Integer.parseInt(textField7.getText()));
+                todoList.addurgentrtask(u);
+                JOptionPane.showConfirmDialog(null, "The assignment is added successfully!");
 
             }
         });
@@ -77,7 +49,7 @@ public class AddUrgentAssignment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                new AssignemntTodoApp();
+
 
             }
         });

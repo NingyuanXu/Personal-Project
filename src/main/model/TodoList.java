@@ -1,12 +1,18 @@
 package main.model;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TodoList {
     private List<Assignment> todoList;
     private List<Assignment> crossOffList;
     public static int Number;
+    public static Map<Integer, Assignment> taskMap1  = new HashMap<>();
+    public static Map<Integer, Assignment> taskMap2  = new HashMap<>();
+
 
 
     public TodoList() {
@@ -19,6 +25,10 @@ public class TodoList {
 
     public List<Assignment> getTodoList() {
         return todoList;
+    }
+
+    public List<Assignment> getCrossOffList() {
+        return crossOffList;
     }
 
     public void addregulartask(Assignment a) {
@@ -48,12 +58,13 @@ public class TodoList {
                 itemThere = true;
                 todoList.remove(a);
                 crossOffList.add(a);
-                System.out.println("The item you selected has been deleted from the Todo List.\n");
-                System.out.println("You have " + todoList.size() + " items left in your TodoList");
+                JOptionPane.showConfirmDialog(null,"The item you selected has been deleted from the Todo List.");
+                System.out.println("The assignment is deleted successfully!");
             }
         }
         if (!itemThere) {
-            System.out.println("Item Not Found!!!");
+            JOptionPane.showConfirmDialog(null,"Item Not Found!!!");
+
         }
 
     }
@@ -66,11 +77,12 @@ public class TodoList {
                 itemThere = true;
                 crossOffList.remove(t);
                 todoList.add(t);
-                System.out.println("The item you selected has been retrieved and placed back to the Todo List.");
+                JOptionPane.showConfirmDialog(null,"The item you selected has been retrieved and placed back to the Todo List.");
+                System.out.println("The deleted item is retrieved successfully!");
             }
         }
         if (!itemThere) {
-            System.out.println("Item Not Found!!!");
+            JOptionPane.showConfirmDialog(null,"Item Not Found!!!");
         }
     }
 

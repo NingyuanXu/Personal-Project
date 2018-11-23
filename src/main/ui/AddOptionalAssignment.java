@@ -2,15 +2,12 @@ package main.ui;
 
 import main.model.Assignment;
 import main.model.OptionalAssignment;
-import main.model.RegularAssignment;
 import main.model.TodoList;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static main.ui.AssignemntTodoApp.todoList;
 
 public class AddOptionalAssignment extends JFrame {
     private JTextField textField1;
@@ -52,7 +49,6 @@ public class AddOptionalAssignment extends JFrame {
             }
         });
     }
-
 
 
 

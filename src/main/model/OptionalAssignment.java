@@ -8,7 +8,7 @@ public class OptionalAssignment extends Assignment {
 
     @Override
     public String toString() {
-        return "OptionalAssignment" +"\n"+
+        return "Optional Assignment" +"\n"+
 
                 messagePrinter.printcontent();
     }

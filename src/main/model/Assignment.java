@@ -1,8 +1,7 @@
 package main.model;
 
-import java.util.Objects;
-
 public abstract class Assignment {
+
     public final MessagePrinter messagePrinter = new MessagePrinter(this);
     protected int number;
     protected String content;
@@ -99,24 +98,6 @@ public abstract class Assignment {
         this.timeneeded = timeneeded;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Assignment assignment = (Assignment) o;
-        return number == assignment.number &&
-                Double.compare(assignment.timeneeded, timeneeded) == 0 &&
-                Objects.equals(content, assignment.content) &&
-                Objects.equals(course, assignment.course) &&
-                Objects.equals(date, assignment.date) &&
-                Objects.equals(type, assignment.type);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(number, content, course, date, type, timeneeded);
-    }
 
 
 

@@ -10,8 +10,8 @@ public class TodoList {
     private List<Assignment> todoList;
     private List<Assignment> crossOffList;
     public static int Number;
-    public static Map<Integer, Assignment> taskMap1  = new HashMap<>();
-    public static Map<Integer, Assignment> taskMap2  = new HashMap<>();
+    public final Map<Integer, Assignment> taskMap1  = new HashMap<>();
+    public final Map<Integer, Assignment> taskMap2  = new HashMap<>();
 
 
 
@@ -33,57 +33,54 @@ public class TodoList {
 
     public void addregulartask(Assignment a) {
         todoList.add(a);
+        taskMap1.put(a.getNumber(),a);
         print();
         Number++;
     }
 
     public void addurgentrtask(UrgentAssignment u) {
         todoList.add(u);
+        taskMap1.put(u.getNumber(),u);
         print();
         Number++;
     }
 
     public void addoptionaltask(Assignment a)  {
         todoList.add(a);
+        taskMap1.put(a.getNumber(),a);
         print();
         Number++;
 
     }
 
     public void removetask(int num) {
-        boolean itemThere = false;
 
-        for (Assignment a : todoList) {
-            if (a.getNumber() == num) {
-                itemThere = true;
-                todoList.remove(a);
-                crossOffList.add(a);
-                JOptionPane.showConfirmDialog(null,"The item you selected has been deleted from the Todo List.");
-                System.out.println("The assignment is deleted successfully!");
-            }
+        if (taskMap1.containsKey(num)) {
+            crossOffList.add(taskMap1.get(num));
+            todoList.remove(taskMap1.get(num));
+            taskMap2.put(num,taskMap1.get(num));
+            taskMap1.remove(num);
+            JOptionPane.showConfirmDialog(null,"The item you selected has been deleted from the Todo List.");
+            System.out.println("The assignment is deleted successfully!");
         }
-        if (!itemThere) {
-            JOptionPane.showConfirmDialog(null,"Item Not Found!!!");
-
-        }
+        else {JOptionPane.showConfirmDialog(null,"Item Not Found!!!");}
 
     }
 
 
     public void retrievetask(int num) {
-        boolean itemThere = false;
-        for (Assignment t : crossOffList) {
-            if (t.getNumber() == num) {
-                itemThere = true;
-                crossOffList.remove(t);
-                todoList.add(t);
-                JOptionPane.showConfirmDialog(null,"The item you selected has been retrieved and placed back to the Todo List.");
-                System.out.println("The deleted item is retrieved successfully!");
-            }
+
+        if (taskMap2.containsKey(num)) {
+            todoList.add(taskMap2.get(num));
+            crossOffList.remove(taskMap2.get(num));
+            taskMap1.put(num,taskMap2.get(num));
+            taskMap2.remove(num);
+            JOptionPane.showConfirmDialog(null,"The item you selected has been retrieved and placed back to the Todo List.");
+            System.out.println("The deleted item is retrieved successfully!");
         }
-        if (!itemThere) {
-            JOptionPane.showConfirmDialog(null,"Item Not Found!!!");
-        }
+        else {JOptionPane.showConfirmDialog(null,"Item Not Found!!!");}
+
+
     }
 
 

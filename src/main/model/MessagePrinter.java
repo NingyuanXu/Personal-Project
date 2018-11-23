@@ -10,11 +10,11 @@ public class MessagePrinter {
     public String printcontent() {
         return
                  assignment.getNumber() + " "+"\n" +
-                        "content: " + assignment.getContent() + "\n" +
-                        "course: " + assignment.getCourse() + "\n" +
-                        "date: " + assignment.getDate() + "\n" +
-                        "type: " + assignment.getType() + "\n" +
-                        "timeneeded: " + assignment.getTimeneeded() + "\n";
+                        "Content: " + assignment.getContent() + "\n" +
+                        "Course: " + assignment.getCourse() + "\n" +
+                        "Date: " + assignment.getDate() + "\n" +
+                        "Type: " + assignment.getType() + "\n" +
+                        "Timeneeded: " + assignment.getTimeneeded() + "\n";
     }
 
 

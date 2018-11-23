@@ -17,10 +17,10 @@ public class UrgentAssignment extends Assignment {
 
     @Override
     public String toString() {
-        return "UrgentAssignment" +"\n"+
+        return "Urgent Assignment" +"\n"+
                 messagePrinter.printcontent() +
-            "level of urgency: " + levelofurgency +"\n"+
-            "percentage of weight: " + percentageofweight +"\n";
+            "Level of urgency: " + levelofurgency +"\n"+
+            "Percentage of weight: " + percentageofweight +"\n";
 }
 
 

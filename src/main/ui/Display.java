@@ -1,5 +1,7 @@
 package main.ui;
 
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
 import main.model.Assignment;
 import main.model.TodoList;
 
@@ -9,34 +11,43 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
-public class Display extends JFrame {
-    private JPanel panel1;
-    private JButton returnButton;
-    private JTextArea textArea1;
+public class Display {
+    private JPanel Display;
     private JList list1;
+    private JButton saveButton;
+    private JButton returnButton;
 
     public Display(TodoList todoList) {
-
         JFrame frame = new JFrame("Display");
-        frame.setContentPane(panel1);
+        frame.setContentPane(Display);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
         DefaultListModel model = new DefaultListModel();
         list1.setModel(model);
-
         DefaultListModel<String> listModel = (DefaultListModel) list1.getModel();
         for (Assignment a : todoList.getTodoList()) {
             listModel.addElement(a.toString());
         }
 
-
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    todoList.save();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                JOptionPane.showMessageDialog(null, "The Todo List has been saved!");
+            }
+        });
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-
             }
         });
         list1.addMouseListener(new MouseAdapter() {
@@ -62,28 +73,25 @@ public class Display extends JFrame {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
-        panel1 = new JPanel();
-        panel1.setLayout(new BorderLayout(0, 0));
+        Display = new JPanel();
+        Display.setLayout(new GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
         final JLabel label1 = new JLabel();
-        label1.setHorizontalAlignment(0);
         label1.setText("Show all the assignments in the Todo List");
-        panel1.add(label1, BorderLayout.NORTH);
+        Display.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        saveButton = new JButton();
+        saveButton.setText("Save");
+        Display.add(saveButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         returnButton = new JButton();
-        returnButton.setText("Return ");
-        panel1.add(returnButton, BorderLayout.SOUTH);
-        textArea1 = new JTextArea();
-        panel1.add(textArea1, BorderLayout.EAST);
-        final JLabel label2 = new JLabel();
-        label2.setText("");
-        panel1.add(label2, BorderLayout.WEST);
+        returnButton.setText("Return");
+        Display.add(returnButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         list1 = new JList();
-        panel1.add(list1, BorderLayout.CENTER);
+        Display.add(list1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
     }
 
     /**
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {
-        return panel1;
+        return Display;
     }
 }

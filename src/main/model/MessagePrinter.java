@@ -9,12 +9,12 @@ public class MessagePrinter {
 
     public String printcontent() {
         return
-                 assignment.getNumber() + " "+"\n" +
-                        "Content: " + assignment.getContent() + "\n" +
-                        "Course: " + assignment.getCourse() + "\n" +
-                        "Date: " + assignment.getDate() + "\n" +
-                        "Type: " + assignment.getType() + "\n" +
-                        "Timeneeded: " + assignment.getTimeneeded() + "\n";
+                "Number: "+assignment.getNumber()  +"  " +
+                        "Content: " + assignment.getContent() + "  " +
+                        "Course: " + assignment.getCourse() + "  " +
+                        "Date: " + assignment.getDate() + "  " +
+                        "Type: " + assignment.getType() + "  " +
+                        "Timeneeded: " + assignment.getTimeneeded() + "  ";
     }
 
 

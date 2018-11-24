@@ -12,7 +12,7 @@ public class RegularAssignment extends Assignment {
 
     @Override
     public String toString() {
-        return "Regular Assignment" +"\n" +
+        return "Regular Assignment  "  +
                 messagePrinter.printcontent();
     }
 

@@ -3,10 +3,13 @@ package main.model;
 import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.nio.file.Files.readAllLines;
 
 public class TodoList {
     private List<Assignment> todoList;
@@ -104,24 +107,86 @@ public class TodoList {
         writer .close();
     }
 
-//    public void load(List<String> data) throws IOException {
-//        List<String> lines = readAllLines(Paths.get("outputfile.txt"));
-//        String currentClass="";
-//        List<String> temp = new ArrayList<>();
-//        for (String s: lines) {
-//            if (s.equals("Regular Assignment") || s.equals("Optional Assignment") || s.equals("Urgent Assignment")) {
-//                currentClass = s;
-//                buildTask(currentClass,temp);
-//            } else {
-//                temp.add(s);
-//            }
-//        }
-//        buildTask(currentClass, temp);
-//    }
-//
-//    private void buildTask(String currentClass, List<String> lines) {
-//
-//    }
+    public void load() throws IOException {
+        List<String> lines = readAllLines(Paths.get("outputfile.txt"));
+        String currentClass="";
+        List<String> temp = new ArrayList<>();
+        for (String s: lines) {
+            if (s.equals("Regular Assignment") || s.equals("Optional Assignment") || s.equals("Urgent Assignment")) {
+                currentClass = s;
+                buildTask(currentClass,temp);
+            } else {
+                temp.add(s);
+            }
+        }
+        buildTask(currentClass, temp);
+    }
+
+    private void buildTask(String currentClass, List<String> lines) {
+   if (currentClass.equals("Regular Assignment")) {
+       Assignment r = new RegularAssignment(0,"","","","",0);
+       createTask(r,lines);
+       todoList.add(r);
+       taskMap1.put(r.getNumber(),r);
+   }
+   else if (currentClass.equals("Optional Assignment")) {
+       Assignment o = new OptionalAssignment(0,"","","","",0);
+       createTask(o,lines);
+       todoList.add(o);
+       taskMap1.put(o.getNumber(),o);
+
+   }
+   else if (currentClass.equals("Urgent Assignment")) {
+       UrgentAssignment u = new UrgentAssignment(0,"","","","",0,0,0);
+       createTask2(u,lines);
+       todoList.add(u);
+       taskMap1.put(u.getNumber(),u);
+   }
+
+    }
+
+    private void createTask2(UrgentAssignment u, List<String> lines) {
+        for(String s: lines){
+             if(s.startsWith("Content")){
+                u.setContent(s.substring(9));
+            }else if(s.startsWith("Course")){
+                u.setContent(s.substring(8));
+            }else if(s.startsWith("Date")){
+                u.setDate(s.substring(6));
+            }else if(s.startsWith("Type")){
+                u.setType(s.substring(6));
+            }else if(s.startsWith("Timeneeded")){
+                u.setTimeneeded(Double.parseDouble(s.substring(12)));
+            }else if(s.startsWith("Level of urgency")){
+                u.setLevelofurgency(Integer.parseInt(s.substring(16)));
+            }else if(s.startsWith("Percentage of weight")){
+                u.setPercentageofweight(Integer.parseInt(s.substring(20)));
+            }
+             else if (s.startsWith("Number"))
+             {u.setNumber(Integer.parseInt(s.substring(8)));
+             }
+    }}
+
+    private void createTask(Assignment a,List<String> lines) {
+
+            for(String s: lines){
+                 if(s.startsWith("Content")){
+                    a.setContent( s.substring(9));
+                }else if(s.startsWith("Course")){
+                    a.setCourse(s.substring(8));
+                }else if(s.startsWith("Date")){
+                   a.setDate(s.substring(6));
+                }else if(s.startsWith("Type")){
+                    a.setType(s.substring(6));
+                }else if(s.startsWith("Timeneeded")){
+                    a.setTimeneeded(Double.parseDouble(s.substring(12)));
+                }
+                else if (s.startsWith("Number"))
+                {a.setNumber(Integer.parseInt(s.substring(8)));
+                 }
+            }
+        }
+    }
 
 
-}
+

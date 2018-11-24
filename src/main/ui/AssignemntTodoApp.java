@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class AssignemntTodoApp {
 
@@ -28,6 +29,11 @@ public class AssignemntTodoApp {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        try {
+            todoList.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         a1Button.addActionListener(new ActionListener() {
             @Override

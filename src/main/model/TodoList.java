@@ -37,20 +37,22 @@ public class TodoList {
         taskMap1.put(a.getNumber(), a);
         print();
         Number++;
+
     }
 
     public void addurgentrtask(UrgentAssignment u) {
         todoList.add(u);
         taskMap1.put(u.getNumber(), u);
         print();
-        Number++;
+        Number ++;
+
     }
 
     public void addoptionaltask(Assignment a) {
         todoList.add(a);
         taskMap1.put(a.getNumber(), a);
         print();
-        Number++;
+        Number ++;
 
     }
 
@@ -113,6 +115,7 @@ public class TodoList {
                 currentClass = partsOfLine.get(0);
                 partsOfLine.remove(0);
                 buildTask(currentClass, partsOfLine);
+                Number = todoList.size()+1;
             }
         }
     }

@@ -1,8 +1,8 @@
 Regular Assignment  Number: 1  Content: d  Course: d  Date: d  Type: d  Timeneeded: 3.0  
-Urgent Assignment  Number: 2  Content: 4  Course:   Date: d  Type: d  Timeneeded: 3.0  Level of urgency: 4  Percentage of weight: 3
+Urgent Assignment  Number: 2  Content: 4  Course: d   Date: d  Type: d  Timeneeded: 3.0  Level of urgency: 4  Percentage of weight: 3
 Optional Assignment  Number: 3  Content: w  Course: e  Date: e  Type: e  Timeneeded: 3.0  
 Regular Assignment  Number: 4  Content: d  Course: d  Date: d  Type: d  Timeneeded: 3.0  
-Urgent Assignment  Number: 5  Content: d  Course:   Date: d  Type: d  Timeneeded: 3.0  Level of urgency: 4  Percentage of weight: 3
+Urgent Assignment  Number: 5  Content: d  Course: d   Date: d  Type: d  Timeneeded: 3.0  Level of urgency: 4  Percentage of weight: 3
 Optional Assignment  Number: 6  Content: s  Course: s  Date: e  Type: e  Timeneeded: 4.0  
 Regular Assignment  Number: 7  Content: e  Course: e  Date: e  Type: e  Timeneeded: 4.0  
 Urgent Assignment  Number: 8  Content: e  Course: e  Date: e  Type: e  Timeneeded: 3.0  Level of urgency: 3  Percentage of weight: 3

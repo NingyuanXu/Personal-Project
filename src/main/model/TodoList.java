@@ -153,7 +153,7 @@ public class TodoList {
             } else if (s.startsWith("Content")) {
                 u.setContent(s.substring(9));
             } else if (s.startsWith("Course")) {
-                u.setContent(s.substring(8));
+                u.setCourse(s.substring(8));
             } else if (s.startsWith("Date")) {
                 u.setDate(s.substring(6));
             } else if (s.startsWith("Type")) {

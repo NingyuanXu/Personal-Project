@@ -1,1 +1,3 @@
-Regular Assignment  Number: 1  Content: s  Course: s  Date: e  Type: d  Timeneeded: 3.0  
+Regular Assignment  Number: 1  Content: d  Course: d  Date: d  Type: d  Timeneeded: 3.0  
+Urgent Assignment  Number: 2  Content: gg  Course:   Date: g  Type: g  Timeneeded: 3.0  Level of urgency: 3  Percentage of weight: 5
+Optional Assignment  Number: 3  Content: g  Course: g  Date: d  Type: h  Timeneeded: 4.0  
